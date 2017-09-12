@@ -83,6 +83,5 @@ c:\users\brade\documents\visual studio 2015\Projects\ConcordiaBookApp\ConcordiaB
 c:\users\brade\documents\visual studio 2015\Projects\ConcordiaBookApp\ConcordiaBookApp\bin\Microsoft.Owin.Security.Google.xml
 c:\users\brade\documents\visual studio 2015\Projects\ConcordiaBookApp\ConcordiaBookApp\bin\Microsoft.Owin.Security.Twitter.xml
 c:\users\brade\documents\visual studio 2015\Projects\ConcordiaBookApp\ConcordiaBookApp\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-c:\users\brade\documents\visual studio 2015\Projects\ConcordiaBookApp\ConcordiaBookApp\obj\Debug\ConcordiaBookApp.csprojResolveAssemblyReference.cache
 c:\users\brade\documents\visual studio 2015\Projects\ConcordiaBookApp\ConcordiaBookApp\obj\Debug\ConcordiaBookApp.dll
 c:\users\brade\documents\visual studio 2015\Projects\ConcordiaBookApp\ConcordiaBookApp\obj\Debug\ConcordiaBookApp.pdb

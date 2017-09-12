@@ -29,7 +29,5 @@ namespace ConcordiaBookApp.Models
         {
             return new ApplicationDbContext();
         }
-
-        public System.Data.Entity.DbSet<ConcordiaBookApp.Models.Book> Books { get; set; }
     }
 }
