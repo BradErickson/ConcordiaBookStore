@@ -51,21 +51,16 @@ namespace ConcordiaBookApp.Controllers
             if (ModelState.IsValid)
             {
                 var book = new Book();
-                var author = new Author();
-                author.Name = bookAuthor.Author.Name;
+                var author = db.Authors.FirstOrDefault(a => a.Name == bookAuthor.Author.Name) ?? new Author { AuthorID = bookAuthor.Author.AuthorID, Name = bookAuthor.Author.Name };
                 book.Version = bookAuthor.Book.Version;
                 book.ISBN = bookAuthor.Book.ISBN;
                 book.Genre = bookAuthor.Book.Genre;
                 book.SellingPrice = bookAuthor.Book.SellingPrice;
                 book.RentingPrice = bookAuthor.Book.RentingPrice;
                 book.AvailableTrade = bookAuthor.Book.AvailableTrade;
-                book.Authors = new List<Author>
-                {
-                    new Author
-                    {
-                        Name = bookAuthor.Author.Name
-                    }
-                };
+                var authors = new List<Author>();
+                authors.Add(author);
+                book.Authors = authors;
                 book.Title = bookAuthor.Book.Title;
                 book.Description = bookAuthor.Book.Description;
                 db.Books.Add(book);

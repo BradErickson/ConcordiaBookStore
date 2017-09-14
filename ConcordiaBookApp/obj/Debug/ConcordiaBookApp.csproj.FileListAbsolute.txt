@@ -85,3 +85,4 @@ c:\users\brade\documents\visual studio 2015\Projects\ConcordiaBookApp\ConcordiaB
 c:\users\brade\documents\visual studio 2015\Projects\ConcordiaBookApp\ConcordiaBookApp\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 c:\users\brade\documents\visual studio 2015\Projects\ConcordiaBookApp\ConcordiaBookApp\obj\Debug\ConcordiaBookApp.dll
 c:\users\brade\documents\visual studio 2015\Projects\ConcordiaBookApp\ConcordiaBookApp\obj\Debug\ConcordiaBookApp.pdb
+C:\Users\brade\Documents\Visual Studio 2015\Projects\ConcordiaBookApp\ConcordiaBookApp\obj\Debug\ConcordiaBookApp.csprojResolveAssemblyReference.cache
