@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ConcordiaBookApp.Models.Book>
+﻿@*@model IEnumerable<ConcordiaBookApp.Models.Book>
 
 @{
     ViewBag.Title = "Index";
@@ -36,4 +36,17 @@
     </tr>
 }
 
-</table>
+</table>*@
+
+<div class="row">
+    <div ng-controller="AddBookController">
+        <div>
+            <ul ng-repeat="book in books">
+                <li>{{book.title}}</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<script src="~/Client/Books/GetBookService.js"></script>
+<script src="~/Client/Books/CreateBookController.js"></script>
+

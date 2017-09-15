@@ -15,9 +15,27 @@ namespace ConcordiaBookApp.Controllers
         private BookStoreDBContext db = new BookStoreDBContext();
 
         // GET: Books
+        [HttpGet]
+        [Route("Books/getBook")]
+        public JsonResult GetBooks()
+        {
+            var result = db.Books.ToList();
+            var jsonBook = result.Select(x => new
+            {
+                id = x.BookId,
+                title = x.Title,
+                isbn = x.ISBN,
+                authors = x.Authors.Select(y => new
+                {
+                    name = y.Name
+                })
+            });
+            return Json(jsonBook, JsonRequestBehavior.AllowGet);
+        }
+
         public ActionResult Index()
         {
-            return View(db.Books.ToList());
+            return View();
         }
 
         // GET: Books/Details/5
@@ -50,21 +68,22 @@ namespace ConcordiaBookApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                var book = new Book();
-                var author = db.Authors.FirstOrDefault(a => a.Name == bookAuthor.Author.Name) ?? new Author { AuthorID = bookAuthor.Author.AuthorID, Name = bookAuthor.Author.Name };
-                book.Version = bookAuthor.Book.Version;
-                book.ISBN = bookAuthor.Book.ISBN;
-                book.Genre = bookAuthor.Book.Genre;
-                book.SellingPrice = bookAuthor.Book.SellingPrice;
-                book.RentingPrice = bookAuthor.Book.RentingPrice;
-                book.AvailableTrade = bookAuthor.Book.AvailableTrade;
                 var authors = new List<Author>();
+                var author = db.Authors.FirstOrDefault(a => a.Name == bookAuthor.Author.Name) ?? new Author { AuthorID = bookAuthor.Author.AuthorID, Name = bookAuthor.Author.Name };
                 authors.Add(author);
-                book.Authors = authors;
-                book.Title = bookAuthor.Book.Title;
-                book.Description = bookAuthor.Book.Description;
+                var book = new Book {
+                    Version = bookAuthor.Book.Version,
+                    ISBN = bookAuthor.Book.ISBN,
+                    Genre = bookAuthor.Book.Genre,
+                    SellingPrice = bookAuthor.Book.SellingPrice,
+                    RentingPrice = bookAuthor.Book.RentingPrice,
+                    AvailableTrade = bookAuthor.Book.AvailableTrade,
+                    Title = bookAuthor.Book.Title,
+                    Description = bookAuthor.Book.Description,
+                    Authors = authors,
+                };
+              
                 db.Books.Add(book);
-
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

@@ -1,4 +1,5 @@
-﻿@model ConcordiaBookApp.Models.AddBookVm
+﻿
+@*@model ConcordiaBookApp.Models.AddBookVm
 
 @{
     ViewBag.Title = "Create";
@@ -7,10 +8,10 @@
 <h2>Create</h2>
 
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Book</h4>
         <hr />
@@ -72,6 +73,7 @@
                 @Html.ValidationMessageFor(model => model.Book.AvailableTrade, "", new { @class = "text-danger" })
             </div>
         </div>
+        <div>@Html.DropDownListFor(model => model.Book.Authors, new SelectList(Model.AuthorsSelectList, "AuthorID", "Name")</div>
         <div class="form-group">
             @Html.LabelFor(model => model.Author.Name, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -94,4 +96,4 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
-}
+}*@
