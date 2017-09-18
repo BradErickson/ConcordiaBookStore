@@ -1,13 +1,12 @@
 ﻿angular.module('bookApp')
-.controller("AddBookController", AddBookController)
+.controller("CreateBookController", CreateBookController)
 
-function AddBookController($scope, BookService) {
-    getBooks();
-    function getBooks() {
-        var book = BookService.getBooks().then(function (data) {
-            debugger;
-            $scope.books = data;
+function CreateBookController($scope, BookService) {
+    $scope.PostBook = {};
+    $scope.update = function (PostBook) {
+        debugger;
+        BookService.postBooks(PostBook).then(function (response) {
+            console.log('post response: ', response)
         });
     }
-
 }

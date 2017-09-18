@@ -39,7 +39,8 @@
 </table>*@
 
 <div class="row">
-    <div ng-controller="AddBookController">
+    <div ng-controller="BookIndexController">
+        @Html.ActionLink("Create", "Create")
         <div>
             <ul ng-repeat="book in books">
                 <li>{{book.title}}</li>
@@ -47,6 +48,6 @@
         </div>
     </div>
 </div>
-<script src="~/Client/Books/GetBookService.js"></script>
-<script src="~/Client/Books/CreateBookController.js"></script>
+@*<script src="~/Client/Books/GetBookService.js"></script>
+<script src="~/Client/Books/CreateBookController.js"></script>*@
 

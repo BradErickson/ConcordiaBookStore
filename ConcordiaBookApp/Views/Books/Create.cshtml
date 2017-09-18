@@ -97,3 +97,22 @@
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }*@
+
+<div class="row">
+    <div ng-controller="CreateBookController">
+        @Html.ActionLink("Index", "Index")
+        <form novalidate class="simple-form">
+            <label>Title: <input type="text" ng-model="PostBook.Title" /></label><br />
+            <label>Version: <input type="number" ng-model="PostBook.Version" /></label><br />
+            <label>ISBN: <input type="text" ng-model="PostBook.Isbn" /></label><br />
+            <label>Genre: <input type="text" ng-model="PostBook.Genre" /></label><br />
+            <label>Selling Price: <input type="number" ng-model="PostBook.SellingPrice" /></label><br />
+            <label>Rental Price: <input type="number" ng-model="PostBook.RentingPrice" /></label><br />
+            <label>Trade: <input type="checkbox" ng-model="PostBook.AvailableTrade" /></label><br />
+            <label>Description: <input type="text" ng-model="PostBook.Description" /></label><br />
+            <label>Author Name: <input type="text" ng-model="PostBook.AuthorName" /></label><br />
+            <input type="submit" ng-click="update(PostBook)" value="Save" />
+        </form>
+    </div>
+</div>
+

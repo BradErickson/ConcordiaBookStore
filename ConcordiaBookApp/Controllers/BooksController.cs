@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using ConcordiaBookApp.Models;
+using System.Web.Http;
 
 namespace ConcordiaBookApp.Controllers
 {
@@ -15,8 +16,8 @@ namespace ConcordiaBookApp.Controllers
         private BookStoreDBContext db = new BookStoreDBContext();
 
         // GET: Books
-        [HttpGet]
-        [Route("Books/getBook")]
+        [System.Web.Http.HttpGet]
+        [System.Web.Http.Route("Books/getBook")]
         public JsonResult GetBooks()
         {
             var result = db.Books.ToList();
@@ -62,33 +63,32 @@ namespace ConcordiaBookApp.Controllers
         // POST: Books/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(AddBookVm bookAuthor)
+        [System.Web.Http.HttpPost]
+        [System.Web.Http.Route("Books/postBook")]
+        public string PostBook([FromBody]PostBook book)
         {
-            if (ModelState.IsValid)
-            {
+
                 var authors = new List<Author>();
-                var author = db.Authors.FirstOrDefault(a => a.Name == bookAuthor.Author.Name) ?? new Author { AuthorID = bookAuthor.Author.AuthorID, Name = bookAuthor.Author.Name };
+                var author = db.Authors.FirstOrDefault(a => a.Name == book.AuthorName) ?? new Author { Name = book.AuthorName };
                 authors.Add(author);
-                var book = new Book {
-                    Version = bookAuthor.Book.Version,
-                    ISBN = bookAuthor.Book.ISBN,
-                    Genre = bookAuthor.Book.Genre,
-                    SellingPrice = bookAuthor.Book.SellingPrice,
-                    RentingPrice = bookAuthor.Book.RentingPrice,
-                    AvailableTrade = bookAuthor.Book.AvailableTrade,
-                    Title = bookAuthor.Book.Title,
-                    Description = bookAuthor.Book.Description,
+
+                var bookinfo = new Book
+                {
+                    Version = book.Version,
+                    ISBN = book.ISBN,
+                    Genre = book.Genre,
+                    SellingPrice = book.SellingPrice,
+                    RentingPrice = book.RentingPrice,
+                    AvailableTrade = book.AvailableTrade,
+                    Title = book.Title,
+                    Description = book.Description,
                     Authors = authors,
                 };
-              
-                db.Books.Add(book);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
 
-            return View(bookAuthor);
+                db.Books.Add(bookinfo);
+                db.SaveChanges();
+
+            return "success";
         }
 
         // GET: Books/Edit/5
@@ -102,22 +102,6 @@ namespace ConcordiaBookApp.Controllers
             if (book == null)
             {
                 return HttpNotFound();
-            }
-            return View(book);
-        }
-
-        // POST: Books/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "BookId,Title,Description")] Book book)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(book).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
             }
             return View(book);
         }
@@ -138,7 +122,7 @@ namespace ConcordiaBookApp.Controllers
         }
 
         // POST: Books/Delete/5
-        [HttpPost, ActionName("Delete")]
+        [System.Web.Http.HttpPost, System.Web.Http.ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {

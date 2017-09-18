@@ -13,6 +13,21 @@ function BookService ($http) {
             console.log(response);
         });
     };
+
+    BookService.postBooks = function (PostBook) {
+        return $http({
+            method: 'POST',
+            url: '/Books/postBook',
+            data: PostBook,
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).then(function successCallback(response) {
+            console.log("response", response);
+        }, function errorCallback(response) {
+            console.log("response", response);
+        });
+    }
     return BookService;
 
 }
