@@ -1,62 +1,28 @@
-﻿@*@model IEnumerable<ConcordiaBookApp.Models.Book>
-
-    @{
-        ViewBag.Title = "Index";
-    }
-
-    <h2>Index</h2>
-
-    <p>
-        @Html.ActionLink("Create New", "Create")
-    </p>
-    <table class="table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Title)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Description)
-            </th>
-            <th></th>
-        </tr>
-
-    @foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Title)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id=item.BookId }) |
-                @Html.ActionLink("Details", "Details", new { id=item.BookId }) |
-                @Html.ActionLink("Delete", "Delete", new { id=item.BookId })
-            </td>
-        </tr>
-    }
-
-    </table>*@
-
-<div class="row">
+﻿<div class="row">
     <div ng-controller="BookIndexController">
         @Html.ActionLink("Create", "Create")
         <div class="container">
-            <h2>Available Books!</h2>
+            <h2>Available Books</h2>
 
             <table class="table table-hover">
                 <thead>
                         <tr>
                             <th>Title</th>
-                            <th>ISBN</th>
                             <th>Author</th>
+                            <th>ISBN</th>
+                            <th>Genre</th>
+                            <th>Sale Price</th>
+                            <th>Rent Price</th>
                         </tr>
                 </thead>
                 <tbody>
                     <tr ng-repeat="book in books">
                         <td>{{book.title}}</td>
-                        <td>{{book.isbn}}</td>
                         <td ng-repeat="author in book.authors">{{author.name}}</td>
+                        <td>{{book.isbn}}</td>
+                        <td>{{book.genre}}</td>
+                        <td>{{book.sellingPrice}}</td>
+                        <td>{{book.rentingPrice}}</td>
                     </tr>
                 </tbody>
             </table>
@@ -66,4 +32,3 @@
 </div>
 @*<script src="~/Client/Books/GetBookService.js"></script>
     <script src="~/Client/Books/CreateBookController.js"></script>*@
-

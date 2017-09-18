@@ -26,6 +26,9 @@ namespace ConcordiaBookApp.Controllers
                 id = x.BookId,
                 title = x.Title,
                 isbn = x.ISBN,
+                genre = x.Genre,
+                rentingPrice = x.RentingPrice,
+                sellingPrice = x.SellingPrice,
                 authors = x.Authors.Select(y => new
                 {
                     name = y.Name
