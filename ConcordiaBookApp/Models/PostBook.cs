@@ -16,5 +16,6 @@ namespace ConcordiaBookApp.Models
         public double RentingPrice { get; set; }
         public bool AvailableTrade { get; set; }
         public string AuthorName { get; set; }
+        public string PhotoUrl { get; set; }
     }
 }

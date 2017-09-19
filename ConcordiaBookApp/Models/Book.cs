@@ -19,6 +19,7 @@ namespace ConcordiaBookApp.Models
         public double SellingPrice { get; set; }
         public double RentingPrice { get; set; }
         public bool AvailableTrade { get; set; }
+        public string PhotoUrl { get; set; }
         public virtual ICollection<Author> Authors { get; set; }
     }
 

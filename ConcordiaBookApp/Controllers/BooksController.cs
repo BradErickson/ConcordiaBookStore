@@ -29,6 +29,7 @@ namespace ConcordiaBookApp.Controllers
                 genre = x.Genre,
                 rentingPrice = x.RentingPrice,
                 sellingPrice = x.SellingPrice,
+                photoUrl = x.PhotoUrl,
                 authors = x.Authors.Select(y => new
                 {
                     name = y.Name
@@ -85,6 +86,7 @@ namespace ConcordiaBookApp.Controllers
                     AvailableTrade = book.AvailableTrade,
                     Title = book.Title,
                     Description = book.Description,
+                    PhotoUrl = book.PhotoUrl,
                     Authors = authors,
                 };
 
