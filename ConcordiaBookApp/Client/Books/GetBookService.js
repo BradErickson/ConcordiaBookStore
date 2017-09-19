@@ -28,6 +28,18 @@ function BookService ($http) {
             console.log("response", response);
         });
     }
+
+    BookService.deleteBooks = function (bookId) {
+        return $http({
+            method: 'DELETE',
+            url: '/Books/deleteBook/' + bookId
+        }).then(function successCallback(response) {
+            console.log("response", response);
+        }, function errorCallback(response) {
+            console.log("response", response);
+        });
+    }
+
     return BookService;
 
 }

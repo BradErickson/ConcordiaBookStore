@@ -109,30 +109,15 @@ namespace ConcordiaBookApp.Controllers
             return View(book);
         }
 
-        // GET: Books/Delete/5
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Book book = db.Books.Find(id);
-            if (book == null)
-            {
-                return HttpNotFound();
-            }
-            return View(book);
-        }
-
         // POST: Books/Delete/5
-        [System.Web.Http.HttpPost, System.Web.Http.ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        [System.Web.Http.HttpDelete]
+        [System.Web.Http.Route("Books/deleteBook/{id}")]
+        public HttpStatusCode DeleteBook(int id)
         {
             Book book = db.Books.Find(id);
             db.Books.Remove(book);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return HttpStatusCode.OK;
         }
 
         protected override void Dispose(bool disposing)

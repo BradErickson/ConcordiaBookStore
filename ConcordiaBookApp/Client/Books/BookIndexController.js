@@ -9,4 +9,12 @@ function BookIndexController($scope, BookService) {
         });
     }
 
+    $scope.delete = function (bookId) {
+        debugger;
+        BookService.deleteBooks(bookId).then(function (data) {
+            console.log("Data: ", data);
+            getBooks();
+        })
+    }
+
 }

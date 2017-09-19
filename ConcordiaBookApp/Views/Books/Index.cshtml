@@ -3,7 +3,6 @@
         @Html.ActionLink("Create", "Create")
         <div class="container">
             <h2>Available Books</h2>
-
             <table class="table table-hover">
                 <thead>
                         <tr>
@@ -23,12 +22,10 @@
                         <td>{{book.genre}}</td>
                         <td>{{book.sellingPrice}}</td>
                         <td>{{book.rentingPrice}}</td>
+                        <td><button class="btn btn-danger" ng-click="delete(book.id)">Remove</button></td>
                     </tr>
                 </tbody>
             </table>
         </div>
-        {{books}}
     </div>
 </div>
-@*<script src="~/Client/Books/GetBookService.js"></script>
-    <script src="~/Client/Books/CreateBookController.js"></script>*@
