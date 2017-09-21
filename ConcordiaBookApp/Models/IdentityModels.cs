@@ -16,6 +16,7 @@ namespace ConcordiaBookApp.Models
             // Add custom user claims here
             return userIdentity;
         }
+        public virtual UserProfile UserProfile { get; set; }
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
@@ -23,7 +24,11 @@ namespace ConcordiaBookApp.Models
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
+
         }
+        public DbSet<Book> Books { get; set; }
+        public DbSet<Author> Authors { get; set; }
+        public DbSet<UserProfile> UserProfile { get; set; }
 
         public static ApplicationDbContext Create()
         {

@@ -22,10 +22,4 @@ namespace ConcordiaBookApp.Models
         public string PhotoUrl { get; set; }
         public virtual ICollection<Author> Authors { get; set; }
     }
-
-    public class BookStoreDBContext : DbContext
-    {
-        public DbSet<Book> Books { get; set; }
-        public DbSet<Author> Authors { get; set; }
-    }
 }

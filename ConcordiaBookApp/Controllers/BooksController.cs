@@ -13,7 +13,7 @@ namespace ConcordiaBookApp.Controllers
 {
     public class BooksController : Controller
     {
-        private BookStoreDBContext db = new BookStoreDBContext();
+        private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Books
         [System.Web.Http.HttpGet]

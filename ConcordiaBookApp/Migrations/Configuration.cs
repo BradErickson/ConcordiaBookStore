@@ -5,15 +5,14 @@ namespace ConcordiaBookApp.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<ConcordiaBookApp.Models.BookStoreDBContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<ConcordiaBookApp.Models.ApplicationDbContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
-            ContextKey = "ConcordiaBookApp.Models.BookStoreDBContext";
         }
 
-        protected override void Seed(ConcordiaBookApp.Models.BookStoreDBContext context)
+        protected override void Seed(ConcordiaBookApp.Models.ApplicationDbContext context)
         {
             //  This method will be called after migrating to the latest version.
 
