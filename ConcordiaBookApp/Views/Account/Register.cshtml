@@ -1,41 +1,18 @@
-﻿@model ConcordiaBookApp.Models.RegisterViewModel
-@{
-    ViewBag.Title = "Register";
-}
-
-<h2>@ViewBag.Title.</h2>
-
-@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-{
-    @Html.AntiForgeryToken()
-    <h4>Create a new account.</h4>
-    <hr />
-    @Html.ValidationSummary("", new { @class = "text-danger" })
-    <div class="form-group">
-        @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
-        </div>
+﻿<div class="row">
+    <div ng-controller="CreateNewUserController">
+        @Html.ActionLink("Index", "Index")
+        <form novalidate class="simple-form">
+            <label>Email: <input type="text" ng-model="CreateUserViewModel.Email" /></label><br />
+            <label>Password: <input type="text" ng-model="CreateUserViewModel.Password" /></label><br />
+            <label>Confirm Password: <input type="text" ng-model="CreateUserViewModel.ConfirmPassword" /></label><br />
+            <label>First Name: <input type="text" ng-model="CreateUserViewModel.FirstName" /></label><br />
+            <label>Last Name: <input type="text" ng-model="CreateUserViewModel.LastName" /></label><br />
+            <label>Phone: <input type="text" ng-model="CreateUserViewModel.Phone" /></label><br />
+            <label>Address: <input type="text" ng-model="CreateUserViewModel.Address" /></label><br />
+            <label>City: <input type="text" ng-model="CreateUserViewModel.City" /></label><br />
+            <label>State: <input type="text" ng-model="CreateUserViewModel.State" /></label><br />
+            <label>ZipCode: <input type="number" ng-model="CreateUserViewModel.ZipCode" /></label><br />
+            <input type="submit" ng-click="update(CreateUserViewModel)" value="Save" />
+        </form>
     </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" class="btn btn-default" value="Register" />
-        </div>
-    </div>
-}
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+</div>

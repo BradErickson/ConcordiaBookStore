@@ -13,9 +13,11 @@ namespace ConcordiaBookApp.Models
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
             var userIdentity = await manager.CreateIdentityAsync(this, DefaultAuthenticationTypes.ApplicationCookie);
+    
             // Add custom user claims here
             return userIdentity;
         }
+
         public virtual UserProfile UserProfile { get; set; }
     }
 
@@ -28,7 +30,7 @@ namespace ConcordiaBookApp.Models
         }
         public DbSet<Book> Books { get; set; }
         public DbSet<Author> Authors { get; set; }
-        public DbSet<UserProfile> UserProfile { get; set; }
+        public DbSet<UserProfile> UserProfiles { get; set; }
 
         public static ApplicationDbContext Create()
         {
