@@ -4,6 +4,7 @@ using Microsoft.AspNet.Identity.Owin;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
@@ -99,7 +100,7 @@ namespace ConcordiaBookApp.Controllers
 
         [HttpPost]
         [System.Web.Http.Route("User/RegisterNewUser")]
-        public async Task<string> RegisterNewUser([System.Web.Http.FromBody]CreateUserViewModel model)
+        public async Task<JsonResult> RegisterNewUser([System.Web.Http.FromBody]CreateUserViewModel model)
         {
 
             var profile = new UserProfile
@@ -124,11 +125,10 @@ namespace ConcordiaBookApp.Controllers
                 // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                 // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
-                return "success";
+                return Json(profile);
             }
 
-            // If we got this far, something failed, redisplay form
-            return "I dont know";
+            return Json(profile);
         }
     }
 }

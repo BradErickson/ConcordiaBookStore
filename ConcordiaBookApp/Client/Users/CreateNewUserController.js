@@ -6,7 +6,9 @@ function CreateNewUserController($scope, UserService) {
     $scope.update = function (CreateUserViewModel) {
         debugger;
         UserService.postUser(CreateUserViewModel).then(function (response) {
-            console.log('post response: ', response)
+                alert("Success");
+                window.location = "/";
+
         });
     }
 }

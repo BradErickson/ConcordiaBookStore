@@ -69,7 +69,7 @@ namespace ConcordiaBookApp.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [System.Web.Http.HttpPost]
         [System.Web.Http.Route("Books/postBook")]
-        public string PostBook([FromBody]PostBook book)
+        public HttpStatusCode PostBook([FromBody]PostBook book)
         {
 
                 var authors = new List<Author>();
@@ -93,7 +93,7 @@ namespace ConcordiaBookApp.Controllers
                 db.Books.Add(bookinfo);
                 db.SaveChanges();
 
-            return "success";
+            return HttpStatusCode.OK;
         }
 
         // GET: Books/Edit/5
