@@ -1,0 +1,30 @@
+﻿<div class="row">
+    <div ng-controller="CurrentUserController">
+        @Html.ActionLink("Create", "Create")
+        <div class="container">
+            <h2>USER INFO</h2>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Phone</th>
+                        <th>Address</th>
+                        <th>City</th>
+                        <th>State</th>
+                        <th>ZipCode</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{user.FirstName}} {{user.LastName}}</td>
+                        <td>{{user.Phone}}</td>
+                        <td>{{user.Address}}</td>
+                        <td>{{user.City}}</td>
+                        <td>{{user.State}}</td>
+                        <td>{{user.ZipCode}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

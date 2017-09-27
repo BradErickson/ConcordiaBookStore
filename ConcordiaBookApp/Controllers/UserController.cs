@@ -10,8 +10,11 @@ using System.Web.Mvc;
 
 namespace ConcordiaBookApp.Controllers
 {
+
+
     public class UserController : Controller
     {
+        private ApplicationDbContext db = new ApplicationDbContext();
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 
@@ -37,6 +40,61 @@ namespace ConcordiaBookApp.Controllers
             {
                 _signInManager = value;
             }
+        }
+
+        public ActionResult index()
+        {
+            return View();
+        }
+
+        public ActionResult UserProfile()
+        {
+            return View();
+        }
+
+        // GET: Books
+        [System.Web.Http.HttpGet]
+        [System.Web.Http.Route("Books/getBook")]
+        public JsonResult GetBooks()
+        {
+            var result = db.Books.ToList();
+            var jsonBook = result.Select(x => new
+            {
+                id = x.BookId,
+                title = x.Title,
+                isbn = x.ISBN,
+                genre = x.Genre,
+                rentingPrice = x.RentingPrice,
+                sellingPrice = x.SellingPrice,
+                photoUrl = x.PhotoUrl,
+                authors = x.Authors.Select(y => new
+                {
+                    name = y.Name
+                })
+            });
+            return Json(jsonBook, JsonRequestBehavior.AllowGet);
+        }
+
+
+        [HttpGet]
+        [System.Web.Http.Route("User/GetCurrentUser")]
+        public JsonResult GetCurrentUser() 
+        {
+            var currentUserId = User.Identity.GetUserId();
+            var result = db.UserProfiles.FirstOrDefault(x => x.UserId == currentUserId);
+            var currentUserProfile = new UserProfile
+            {
+                FirstName = result.FirstName,
+                LastName = result.LastName,
+                Phone = result.Phone,
+                Address = result.Address,
+                City = result.City,
+                State = result.State,
+                ZipCode = result.ZipCode
+
+            };
+            return Json(currentUserProfile, JsonRequestBehavior.AllowGet);
+
         }
 
         [HttpPost]

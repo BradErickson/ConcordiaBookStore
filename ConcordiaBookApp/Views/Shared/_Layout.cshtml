@@ -12,7 +12,7 @@
     @Scripts.Render("~/Client/app.js")
     @Scripts.Render("~/Client/Books/GetBookService.js")
     @Scripts.Render("~/Client/Books/CreateBookController.js")
-
+    @Scripts.Render("~/Client/Users/CurrentUserProfile.js")
 
     <link href="~/Client/css/BookstoreCss.css" rel="stylesheet" />
 </head>
@@ -32,6 +32,7 @@
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("View Books", "Index", "Books")</li>
                     <li>@Html.ActionLink("Add Book", "Create", "Books")</li>
+                    <li>@Html.ActionLink("User Profile", "UserProfile", "User")</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
@@ -50,6 +51,7 @@
     <script src="~/Client/Books/BookIndexController.js"></script>
     <script src="~/Client/Books/CreateBookController.js"></script>
     <script src="~/Client/Users/UserService.js"></script>
+    <script src="~/Client/Users/CreateNewUserController.js"></script>
     <script src="~/Client/Users/CreateNewUserController.js"></script>
 </body>
 </html>

@@ -20,6 +20,17 @@ function UserService($http) {
     }
 
 
+    UserService.getUser = function () {
+        return $http({
+            method: 'GET',
+            url: '/user/GetCurrentUser'
+        }).then(function successCallback(response) {
+            return response.data;
+        }, function errorCallback(response) {
+            console.log(response);
+        });
+    };
+
     return UserService;
 
 }
