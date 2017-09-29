@@ -11,6 +11,7 @@
                             <th>Author</th>
                             <th>ISBN</th>
                             <th>Genre</th>
+                            <th>Quantity in Stock</th>
                             <th>Sale Price</th>
                             <th>Rent Price</th>
                         </tr>
@@ -22,6 +23,7 @@
                         <td ng-repeat="author in book.authors">{{author.name}}</td>
                         <td>{{book.isbn}}</td>
                         <td>{{book.genre}}</td>
+                        <td>{{book.quantity}}</td>
                         <td>{{book.sellingPrice}}</td>
                         <td>{{book.rentingPrice}}</td>
                         <td><button class="btn btn-primary" ng-click="rentBook(book.id)">Rent</button></td>

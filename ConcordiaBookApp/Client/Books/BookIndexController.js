@@ -5,7 +5,14 @@ function BookIndexController($scope, BookService) {
     getBooks();
     function getBooks() {
         var book = BookService.getBooks().then(function (data) {
-            $scope.books = data;
+            var newData = [];
+            debugger;
+            for (var i = 0; i < data.length; i++) {
+                if (data[i].quantity) {
+                    newData.push(data[i]);
+                }
+            }
+            $scope.books = newData;
         });
     }
 

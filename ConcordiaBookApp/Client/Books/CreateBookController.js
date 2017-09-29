@@ -9,4 +9,6 @@ function CreateBookController($scope, BookService) {
             window.location = "/";
         });
     }
+
+
 }

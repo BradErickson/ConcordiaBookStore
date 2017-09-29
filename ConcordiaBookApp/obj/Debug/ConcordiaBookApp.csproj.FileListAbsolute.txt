@@ -87,18 +87,18 @@ c:\users\brade\documents\visual studio 2015\Projects\ConcordiaBookApp\ConcordiaB
 c:\users\brade\documents\visual studio 2015\Projects\ConcordiaBookApp\ConcordiaBookApp\obj\Debug\ConcordiaBookApp.pdb
 C:\Users\brade\Documents\Visual Studio 2015\Projects\ConcordiaBookApp\ConcordiaBookApp\obj\Debug\ConcordiaBookApp.csprojResolveAssemblyReference.cache
 C:\Users\brade\Documents\Visual Studio 2015\Projects\ConcordiaBookStore\ConcordiaBookApp\bin\ApplicationInsights.config
-C:\Users\brade\Documents\Visual Studio 2015\Projects\ConcordiaBookStore\ConcordiaBookApp\bin\roslyn\Microsoft.CSharp.Core.targets
-C:\Users\brade\Documents\Visual Studio 2015\Projects\ConcordiaBookStore\ConcordiaBookApp\bin\roslyn\Microsoft.VisualBasic.Core.targets
-C:\Users\brade\Documents\Visual Studio 2015\Projects\ConcordiaBookStore\ConcordiaBookApp\bin\roslyn\VBCSCompiler.exe.config
 C:\Users\brade\Documents\Visual Studio 2015\Projects\ConcordiaBookStore\ConcordiaBookApp\bin\roslyn\csc.exe
 C:\Users\brade\Documents\Visual Studio 2015\Projects\ConcordiaBookStore\ConcordiaBookApp\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
 C:\Users\brade\Documents\Visual Studio 2015\Projects\ConcordiaBookStore\ConcordiaBookApp\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
 C:\Users\brade\Documents\Visual Studio 2015\Projects\ConcordiaBookStore\ConcordiaBookApp\bin\roslyn\Microsoft.CodeAnalysis.dll
 C:\Users\brade\Documents\Visual Studio 2015\Projects\ConcordiaBookStore\ConcordiaBookApp\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\brade\Documents\Visual Studio 2015\Projects\ConcordiaBookStore\ConcordiaBookApp\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\brade\Documents\Visual Studio 2015\Projects\ConcordiaBookStore\ConcordiaBookApp\bin\roslyn\Microsoft.VisualBasic.Core.targets
 C:\Users\brade\Documents\Visual Studio 2015\Projects\ConcordiaBookStore\ConcordiaBookApp\bin\roslyn\System.Collections.Immutable.dll
 C:\Users\brade\Documents\Visual Studio 2015\Projects\ConcordiaBookStore\ConcordiaBookApp\bin\roslyn\System.Reflection.Metadata.dll
 C:\Users\brade\Documents\Visual Studio 2015\Projects\ConcordiaBookStore\ConcordiaBookApp\bin\roslyn\vbc.exe
 C:\Users\brade\Documents\Visual Studio 2015\Projects\ConcordiaBookStore\ConcordiaBookApp\bin\roslyn\VBCSCompiler.exe
+C:\Users\brade\Documents\Visual Studio 2015\Projects\ConcordiaBookStore\ConcordiaBookApp\bin\roslyn\VBCSCompiler.exe.config
 C:\Users\brade\Documents\Visual Studio 2015\Projects\ConcordiaBookStore\ConcordiaBookApp\bin\ConcordiaBookApp.dll.config
 C:\Users\brade\Documents\Visual Studio 2015\Projects\ConcordiaBookStore\ConcordiaBookApp\bin\ConcordiaBookApp.dll
 C:\Users\brade\Documents\Visual Studio 2015\Projects\ConcordiaBookStore\ConcordiaBookApp\bin\ConcordiaBookApp.pdb
@@ -173,4 +173,3 @@ C:\Users\brade\Documents\Visual Studio 2015\Projects\ConcordiaBookStore\Concordi
 C:\Users\brade\Documents\Visual Studio 2015\Projects\ConcordiaBookStore\ConcordiaBookApp\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 C:\Users\brade\Documents\Visual Studio 2015\Projects\ConcordiaBookStore\ConcordiaBookApp\obj\Debug\ConcordiaBookApp.dll
 C:\Users\brade\Documents\Visual Studio 2015\Projects\ConcordiaBookStore\ConcordiaBookApp\obj\Debug\ConcordiaBookApp.pdb
-C:\Users\brade\Documents\Visual Studio 2015\Projects\ConcordiaBookStore\ConcordiaBookApp\obj\Debug\ConcordiaBookApp.csprojResolveAssemblyReference.cache

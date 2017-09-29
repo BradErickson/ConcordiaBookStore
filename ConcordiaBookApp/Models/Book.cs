@@ -15,6 +15,7 @@ namespace ConcordiaBookApp.Models
         public string Description { get; set; }
         public double Version { get; set; }
         public int ISBN { get; set; }
+        public int Quantity { get; set; }
         public string Genre { get; set; }
         public double SellingPrice { get; set; }
         public double RentingPrice { get; set; }

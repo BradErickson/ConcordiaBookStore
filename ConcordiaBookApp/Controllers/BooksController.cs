@@ -22,6 +22,7 @@ namespace ConcordiaBookApp.Controllers
         public JsonResult GetBooks()
         {
             var result = db.Books.ToList();
+
             var jsonBook = result.Select(x => new
             {
                 id = x.BookId,
@@ -31,6 +32,7 @@ namespace ConcordiaBookApp.Controllers
                 rentingPrice = x.RentingPrice,
                 sellingPrice = x.SellingPrice,
                 photoUrl = x.PhotoUrl,
+                quantity = x.Quantity,
                 authors = x.Authors.Select(y => new
                 {
                     name = y.Name
@@ -86,6 +88,7 @@ namespace ConcordiaBookApp.Controllers
                     RentingPrice = book.RentingPrice,
                     AvailableTrade = book.AvailableTrade,
                     Title = book.Title,
+                    Quantity = book.Quantity,
                     Description = book.Description,
                     PhotoUrl = book.PhotoUrl,
                     Authors = authors,
@@ -107,6 +110,7 @@ namespace ConcordiaBookApp.Controllers
                return "Fail No Id provided";
             }
             Book book = db.Books.Find(id);
+            book.Quantity -= 1;
             var currentUserId = User.Identity.GetUserId();
             var up = db.UserProfiles.FirstOrDefault(x => x.UserId == currentUserId);
             if (book == null)
