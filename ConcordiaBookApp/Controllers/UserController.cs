@@ -53,37 +53,13 @@ namespace ConcordiaBookApp.Controllers
             return View();
         }
 
-        // GET: Books
-        [System.Web.Http.HttpGet]
-        [System.Web.Http.Route("Books/getBook")]
-        public JsonResult GetBooks()
-        {
-            var result = db.Books.ToList();
-            var jsonBook = result.Select(x => new
-            {
-                id = x.BookId,
-                title = x.Title,
-                isbn = x.ISBN,
-                genre = x.Genre,
-                rentingPrice = x.RentingPrice,
-                sellingPrice = x.SellingPrice,
-                photoUrl = x.PhotoUrl,
-                authors = x.Authors.Select(y => new
-                {
-                    name = y.Name
-                })
-            });
-            return Json(jsonBook, JsonRequestBehavior.AllowGet);
-        }
-
-
         [HttpGet]
         [System.Web.Http.Route("User/GetCurrentUser")]
         public JsonResult GetCurrentUser() 
         {
             var currentUserId = User.Identity.GetUserId();
             var result = db.UserProfiles.FirstOrDefault(x => x.UserId == currentUserId);
-            var currentUserProfile = new UserProfile
+            var currentUserProfile = new GetUser
             {
                 FirstName = result.FirstName,
                 LastName = result.LastName,
@@ -91,13 +67,47 @@ namespace ConcordiaBookApp.Controllers
                 Address = result.Address,
                 City = result.City,
                 State = result.State,
-                ZipCode = result.ZipCode
-
+                ZipCode = result.ZipCode,
+                Books = new List<BookRent>()
             };
+            foreach(var r in result.BookRentals)
+            {
+                var b = new BookRent();
+                b.Title = r.Title;
+                b.Description = r.Description;
+                b.Version = r.Version;
+                b.ISBN = r.ISBN;
+                b.Genre = r.Genre;
+                b.SellingPrice = r.SellingPrice;
+                b.RentingPrice = r.RentingPrice;
+                b.AvailableTrade = r.AvailableTrade;
+                currentUserProfile.Books.Add(b);
+            }
             return Json(currentUserProfile, JsonRequestBehavior.AllowGet);
 
         }
+        public class BookRent {
+            public string Title { get; set; }
+            public string Description { get; set; }
+            public double Version { get; set; }
+            public int ISBN { get; set; }
+            public string Genre { get; set; }
+            public double SellingPrice { get; set; }
+            public double RentingPrice { get; set; }
+            public bool AvailableTrade { get; set; }
+        }
 
+        public class GetUser
+        {
+            public string FirstName { get; set; }
+            public string LastName { get; set; }
+            public string Phone { get; set; }
+            public string Address { get; set; }
+            public string City { get; set; }
+            public string State { get; set; }
+            public int ZipCode { get; set; }
+            public List<BookRent> Books { get; set; }
+        }
         [HttpPost]
         [System.Web.Http.Route("User/RegisterNewUser")]
         public async Task<JsonResult> RegisterNewUser([System.Web.Http.FromBody]CreateUserViewModel model)

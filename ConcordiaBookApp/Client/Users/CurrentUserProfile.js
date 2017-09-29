@@ -7,6 +7,8 @@ function CurrentUserController($scope, UserService) {
     function getUserProfile() {
         var user = UserService.getUser().then(function (data) {
             $scope.user = data;
+            debugger;
+            $scope.showBooks = data.Books.length;
         });
     }
 }

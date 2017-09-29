@@ -24,6 +24,7 @@
                         <td>{{book.genre}}</td>
                         <td>{{book.sellingPrice}}</td>
                         <td>{{book.rentingPrice}}</td>
+                        <td><button class="btn btn-primary" ng-click="rentBook(book.id)">Rent</button></td>
                         <td><button class="btn btn-danger" ng-click="delete(book.id)">Remove</button></td>
                     </tr>
                 </tbody>

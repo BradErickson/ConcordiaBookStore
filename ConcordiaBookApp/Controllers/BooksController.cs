@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using ConcordiaBookApp.Models;
 using System.Web.Http;
+using Microsoft.AspNet.Identity;
 
 namespace ConcordiaBookApp.Controllers
 {
@@ -97,18 +98,28 @@ namespace ConcordiaBookApp.Controllers
         }
 
         // GET: Books/Edit/5
-        public ActionResult Edit(int? id)
+        [System.Web.Http.HttpDelete]
+        [System.Web.Http.Route("Books/RentBook/{id}")]
+        public string RentBook(int? id)
         {
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+               return "Fail No Id provided";
             }
             Book book = db.Books.Find(id);
+            var currentUserId = User.Identity.GetUserId();
+            var up = db.UserProfiles.FirstOrDefault(x => x.UserId == currentUserId);
             if (book == null)
             {
-                return HttpNotFound();
+                return "Fail no Book";
             }
-            return View(book);
+            else
+            {
+                up.BookRentals.Add(book);
+                db.SaveChanges();
+                return "success";    
+            }
+            
         }
 
         // POST: Books/Delete/5

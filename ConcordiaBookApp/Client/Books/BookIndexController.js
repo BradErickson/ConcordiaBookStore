@@ -10,8 +10,14 @@ function BookIndexController($scope, BookService) {
     }
 
     $scope.delete = function (bookId) {
-        debugger;
         BookService.deleteBooks(bookId).then(function (data) {
+            console.log("Data: ", data);
+            getBooks();
+        })
+    }
+
+    $scope.rentBook = function (bookId) {
+        BookService.rentBook(bookId).then(function (data) {
             console.log("Data: ", data);
             getBooks();
         })
