@@ -5,7 +5,8 @@ function CreateBookController($scope, BookService) {
     $scope.PostBook = {};
     $scope.update = function (PostBook) {
         BookService.postBooks(PostBook).then(function (response) {
-            console.log('post response: ', response)
+            alert("Success");
+            window.location = "/";
         });
     }
 }
