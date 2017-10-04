@@ -13,7 +13,6 @@ using ConcordiaBookApp.Models;
 
 namespace ConcordiaBookApp.Controllers
 {
-    [Authorize]
     public class AccountController : Controller
     {
         private ApplicationSignInManager _signInManager;
@@ -144,7 +143,6 @@ namespace ConcordiaBookApp.Controllers
         }
 
         [HttpPost]
-        [System.Web.Http.Route("Account/RegisterNewUser")]
         public async Task<string> RegisterNewUser([System.Web.Http.FromBody]CreateUserViewModel model)
         {
 

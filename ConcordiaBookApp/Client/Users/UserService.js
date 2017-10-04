@@ -7,7 +7,7 @@ function UserService($http) {
     UserService.postUser = function (CreateUserViewModel) {
         return $http({
             method: 'POST',
-            url: '/User/RegisterNewUser',
+            url: '/Account/RegisterNewUser',
             data: CreateUserViewModel,
             headers: {
                 "Content-Type": "application/json"
