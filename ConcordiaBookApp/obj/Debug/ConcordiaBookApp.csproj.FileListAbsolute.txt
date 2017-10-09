@@ -128,6 +128,7 @@ C:\Users\brade\Documents\Visual Studio 2015\Projects\ConcordiaBookStore\Concordi
 C:\Users\brade\Documents\Visual Studio 2015\Projects\ConcordiaBookStore\ConcordiaBookApp\bin\Microsoft.Web.Infrastructure.dll
 C:\Users\brade\Documents\Visual Studio 2015\Projects\ConcordiaBookStore\ConcordiaBookApp\bin\Newtonsoft.Json.dll
 C:\Users\brade\Documents\Visual Studio 2015\Projects\ConcordiaBookStore\ConcordiaBookApp\bin\Owin.dll
+C:\Users\brade\Documents\Visual Studio 2015\Projects\ConcordiaBookStore\ConcordiaBookApp\bin\SendGrid.dll
 C:\Users\brade\Documents\Visual Studio 2015\Projects\ConcordiaBookStore\ConcordiaBookApp\bin\System.Net.Http.Formatting.dll
 C:\Users\brade\Documents\Visual Studio 2015\Projects\ConcordiaBookStore\ConcordiaBookApp\bin\System.Web.Helpers.dll
 C:\Users\brade\Documents\Visual Studio 2015\Projects\ConcordiaBookStore\ConcordiaBookApp\bin\System.Web.Http.dll
@@ -145,6 +146,9 @@ C:\Users\brade\Documents\Visual Studio 2015\Projects\ConcordiaBookStore\Concordi
 C:\Users\brade\Documents\Visual Studio 2015\Projects\ConcordiaBookStore\ConcordiaBookApp\bin\Microsoft.AI.WindowsServer.xml
 C:\Users\brade\Documents\Visual Studio 2015\Projects\ConcordiaBookStore\ConcordiaBookApp\bin\Microsoft.ApplicationInsights.xml
 C:\Users\brade\Documents\Visual Studio 2015\Projects\ConcordiaBookStore\ConcordiaBookApp\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\brade\Documents\Visual Studio 2015\Projects\ConcordiaBookStore\ConcordiaBookApp\bin\Newtonsoft.Json.xml
+C:\Users\brade\Documents\Visual Studio 2015\Projects\ConcordiaBookStore\ConcordiaBookApp\bin\SendGrid.pdb
+C:\Users\brade\Documents\Visual Studio 2015\Projects\ConcordiaBookStore\ConcordiaBookApp\bin\SendGrid.xml
 C:\Users\brade\Documents\Visual Studio 2015\Projects\ConcordiaBookStore\ConcordiaBookApp\bin\System.Web.Helpers.xml
 C:\Users\brade\Documents\Visual Studio 2015\Projects\ConcordiaBookStore\ConcordiaBookApp\bin\System.Web.Mvc.xml
 C:\Users\brade\Documents\Visual Studio 2015\Projects\ConcordiaBookStore\ConcordiaBookApp\bin\System.Web.Optimization.xml
@@ -153,7 +157,6 @@ C:\Users\brade\Documents\Visual Studio 2015\Projects\ConcordiaBookStore\Concordi
 C:\Users\brade\Documents\Visual Studio 2015\Projects\ConcordiaBookStore\ConcordiaBookApp\bin\System.Web.WebPages.Deployment.xml
 C:\Users\brade\Documents\Visual Studio 2015\Projects\ConcordiaBookStore\ConcordiaBookApp\bin\System.Web.WebPages.Razor.xml
 C:\Users\brade\Documents\Visual Studio 2015\Projects\ConcordiaBookStore\ConcordiaBookApp\bin\Antlr3.Runtime.pdb
-C:\Users\brade\Documents\Visual Studio 2015\Projects\ConcordiaBookStore\ConcordiaBookApp\bin\Newtonsoft.Json.xml
 C:\Users\brade\Documents\Visual Studio 2015\Projects\ConcordiaBookStore\ConcordiaBookApp\bin\System.Net.Http.Formatting.xml
 C:\Users\brade\Documents\Visual Studio 2015\Projects\ConcordiaBookStore\ConcordiaBookApp\bin\System.Web.Http.xml
 C:\Users\brade\Documents\Visual Studio 2015\Projects\ConcordiaBookStore\ConcordiaBookApp\bin\System.Web.Http.WebHost.xml
@@ -173,3 +176,4 @@ C:\Users\brade\Documents\Visual Studio 2015\Projects\ConcordiaBookStore\Concordi
 C:\Users\brade\Documents\Visual Studio 2015\Projects\ConcordiaBookStore\ConcordiaBookApp\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 C:\Users\brade\Documents\Visual Studio 2015\Projects\ConcordiaBookStore\ConcordiaBookApp\obj\Debug\ConcordiaBookApp.dll
 C:\Users\brade\Documents\Visual Studio 2015\Projects\ConcordiaBookStore\ConcordiaBookApp\obj\Debug\ConcordiaBookApp.pdb
+C:\Users\brade\Documents\Visual Studio 2015\Projects\ConcordiaBookStore\ConcordiaBookApp\obj\Debug\ConcordiaBookApp.csprojResolveAssemblyReference.cache
