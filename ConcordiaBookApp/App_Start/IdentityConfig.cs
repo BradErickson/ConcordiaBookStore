@@ -11,15 +11,27 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
 using ConcordiaBookApp.Models;
+using SendGrid;
+using SendGrid.Helpers.Mail;
 
 namespace ConcordiaBookApp
 {
     public class EmailService : IIdentityMessageService
     {
-        public Task SendAsync(IdentityMessage message)
+        public async Task SendAsync(IdentityMessage iMessage)
+
         {
-            // Plug in your email service here to send an email.
-            return Task.FromResult(0);
+
+            var client = new SendGridClient("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"); // https://app.sendgrid.com
+            var from = new EmailAddress("Ericksob1@csp.edu", "Concordia BookStore");
+            var subject = iMessage.Subject;
+            var to = new EmailAddress(iMessage.Destination);
+            var plainTextContent = iMessage.Body;
+            var htmlContent = "<strong>" + iMessage.Body + "</strong>";
+            var msg = MailHelper.CreateSingleEmail(from, to, subject, plainTextContent, htmlContent);
+
+            var response = await client.SendEmailAsync(msg);
+
         }
     }
 
