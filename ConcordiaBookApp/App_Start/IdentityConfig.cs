@@ -21,8 +21,8 @@ namespace ConcordiaBookApp
         public async Task SendAsync(IdentityMessage iMessage)
 
         {
-
-            var client = new SendGridClient("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"); // https://app.sendgrid.com
+            var apiKey = "";
+            var client = new SendGridClient(apiKey); // https://app.sendgrid.com
             var from = new EmailAddress("Ericksob1@csp.edu", "Concordia BookStore");
             var subject = iMessage.Subject;
             var to = new EmailAddress(iMessage.Destination);
