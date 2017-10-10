@@ -1,5 +1,5 @@
 ﻿angular.module('bookApp')
-.controller("CurrentUserController", CurrentUserController)
+.controller("CurrentUserController", CurrentUserController);
 
 function CurrentUserController($scope, UserService) {
     getUserProfile();

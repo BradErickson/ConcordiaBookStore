@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using ConcordiaBookApp.Models;
 using System.Web.Http;
 using Microsoft.AspNet.Identity;
+using static ConcordiaBookApp.Controllers.UserController;
 
 namespace ConcordiaBookApp.Controllers
 {
@@ -71,6 +72,7 @@ namespace ConcordiaBookApp.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [System.Web.Http.HttpPost]
+        [System.Web.Http.Authorize]
         [System.Web.Http.Route("Books/postBook")]
         public JsonResult PostBook([FromBody]PostBook book)
         {
@@ -79,25 +81,38 @@ namespace ConcordiaBookApp.Controllers
                 var author = db.Authors.FirstOrDefault(a => a.Name == book.AuthorName) ?? new Author { Name = book.AuthorName };
                 authors.Add(author);
 
-                var bookinfo = new Book
-                {
-                    Version = book.Version,
-                    ISBN = book.ISBN,
-                    Genre = book.Genre,
-                    SellingPrice = book.SellingPrice,
-                    RentingPrice = book.RentingPrice,
-                    AvailableTrade = book.AvailableTrade,
-                    Title = book.Title,
-                    Quantity = book.Quantity,
-                    Description = book.Description,
-                    PhotoUrl = book.PhotoUrl,
-                    Authors = authors,
+            var bookinfo = new Book
+            {
+                Version = book.Version,
+                ISBN = book.ISBN,
+                Genre = book.Genre,
+                SellingPrice = book.SellingPrice,
+                RentingPrice = book.RentingPrice,
+                AvailableTrade = book.AvailableTrade,
+                Title = book.Title,
+                Quantity = book.Quantity,
+                Description = book.Description,
+                PhotoUrl = book.PhotoUrl,
+                Authors = authors
                 };
 
+            var currentUserId = User.Identity.GetUserId();
+            var up = db.UserProfiles.FirstOrDefault(x => x.UserId == currentUserId);
+            if (bookinfo == null)
+            {
+                return Json(bookinfo);
+            }
+            else
+            {
+                up.BooksInStore.Add(bookinfo);
+                bookinfo.BookSellerId = up;
                 db.Books.Add(bookinfo);
                 db.SaveChanges();
 
-            return Json(bookinfo);
+                return Json(bookinfo);
+            }
+
+           
         }
 
         // GET: Books/Edit/5

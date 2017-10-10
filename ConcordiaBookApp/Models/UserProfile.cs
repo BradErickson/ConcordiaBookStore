@@ -19,6 +19,7 @@ namespace ConcordiaBookApp.Models
         public string State { get; set; }
         public int ZipCode { get; set; }
         public virtual ApplicationUser User { get; set; }
+        public virtual ICollection<Book> BooksInStore { get; set; }
         public virtual ICollection<Book> BookRentals{get; set;}
        
     }

@@ -68,7 +68,8 @@ namespace ConcordiaBookApp.Controllers
                 City = result.City,
                 State = result.State,
                 ZipCode = result.ZipCode,
-                Books = new List<BookRent>()
+                Books = new List<BookRent>(),
+                BooksForSale = new List<BookRent>()
             };
             foreach(var r in result.BookRentals)
             {
@@ -82,6 +83,19 @@ namespace ConcordiaBookApp.Controllers
                 b.RentingPrice = r.RentingPrice;
                 b.AvailableTrade = r.AvailableTrade;
                 currentUserProfile.Books.Add(b);
+            }
+            foreach (var a in result.BooksInStore)
+            {
+                var c = new BookRent();
+                c.Title = a.Title;
+                c.Description = a.Description;
+                c.Version = a.Version;
+                c.ISBN = a.ISBN;
+                c.Genre = a.Genre;
+                c.SellingPrice = a.SellingPrice;
+                c.RentingPrice = a.RentingPrice;
+                c.AvailableTrade = a.AvailableTrade;
+                currentUserProfile.BooksForSale.Add(c);
             }
             return Json(currentUserProfile, JsonRequestBehavior.AllowGet);
 
@@ -107,6 +121,7 @@ namespace ConcordiaBookApp.Controllers
             public string State { get; set; }
             public int ZipCode { get; set; }
             public List<BookRent> Books { get; set; }
+            public List<BookRent> BooksForSale { get; set; }
         }
         [HttpPost]
         [System.Web.Http.Route("User/RegisterNewUser")]

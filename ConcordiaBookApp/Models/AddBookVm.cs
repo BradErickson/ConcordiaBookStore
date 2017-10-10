@@ -10,5 +10,6 @@ namespace ConcordiaBookApp.Models
         public Book Book { get; set; }
         public Author Author { get; set; }
         public List<Author> AuthorsSelectList { get; set; }
+        
     }
 }
