@@ -1,5 +1,5 @@
 ﻿angular.module('bookApp')
-.controller("CreateNewUserController", CreateNewUserController)
+.controller("CreateNewUserController", CreateNewUserController);
 
 function CreateNewUserController($scope, UserService) {
     $scope.CreateUserViewModel = {};
