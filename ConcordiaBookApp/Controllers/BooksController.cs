@@ -105,7 +105,7 @@ namespace ConcordiaBookApp.Controllers
             else
             {
                 up.BooksInStore.Add(bookinfo);
-                //bookinfo.userId = up.UserId;
+                bookinfo.BookSellerId = up;
                 db.Books.Add(bookinfo);
                 db.SaveChanges();
 
