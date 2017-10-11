@@ -154,9 +154,10 @@ namespace ConcordiaBookApp.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> RegisterNewUser([System.Web.Http.FromBody]CreateUserViewModel model)
+        public async Task<JsonResult> RegisterNewUser([System.Web.Http.FromBody]CreateUserViewModel model)
         {
-
+            try
+            {
                 var profile = new UserProfile
                 {
                     FirstName = model.FirstName,
@@ -167,27 +168,29 @@ namespace ConcordiaBookApp.Controllers
                     State = model.State,
                     ZipCode = model.ZipCode
                 };
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, UserProfile = profile};
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, UserProfile = profile };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    //await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
+                    string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                    var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                    await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
-                // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
-                // Send an email with this link
-                string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+                    ViewBag.Message = "Check your email and confirm your account, you must be confirmed "
+                         + "before you can log in.";
 
-                ViewBag.Message = "Check your email and confirm your account, you must be confirmed "
-                     + "before you can log in.";
-
-                return View();
+                    
+                } else
+                {
+                    throw new Exception("Bad request");
+                }
+                return Json(profile);
             }
-                AddErrors(result);
-
-            // If we got this far, something failed, redisplay form
-            return View(model);
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+    
         }
 
         //

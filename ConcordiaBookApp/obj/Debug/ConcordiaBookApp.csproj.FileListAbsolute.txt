@@ -176,4 +176,5 @@ C:\Users\brade\Documents\Visual Studio 2015\Projects\ConcordiaBookStore\Concordi
 C:\Users\brade\Documents\Visual Studio 2015\Projects\ConcordiaBookStore\ConcordiaBookApp\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 C:\Users\brade\Documents\Visual Studio 2015\Projects\ConcordiaBookStore\ConcordiaBookApp\obj\Debug\ConcordiaBookApp.dll
 C:\Users\brade\Documents\Visual Studio 2015\Projects\ConcordiaBookStore\ConcordiaBookApp\obj\Debug\ConcordiaBookApp.pdb
-C:\Users\brade\Documents\Visual Studio 2015\Projects\ConcordiaBookStore\ConcordiaBookApp\obj\Debug\ConcordiaBookApp.csprojResolveAssemblyReference.cache
+C:\Users\brade\Documents\Visual Studio 2015\Projects\ConcordiaBookStore\ConcordiaBookApp\obj\Debug\ConcordiaBookApp.Migrations.users.resources
+C:\Users\brade\Documents\Visual Studio 2015\Projects\ConcordiaBookStore\ConcordiaBookApp\obj\Debug\ConcordiaBookApp.csproj.GenerateResource.Cache

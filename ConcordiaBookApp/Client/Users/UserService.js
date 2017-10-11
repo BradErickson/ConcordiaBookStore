@@ -1,5 +1,5 @@
 ﻿angular.module('bookApp')
-.factory('UserService', UserService)
+.factory('UserService', UserService);
 
 function UserService($http) {
     var UserService = {};
@@ -13,11 +13,11 @@ function UserService($http) {
                 "Content-Type": "application/json"
             }
         }).then(function successCallback(response) {
-            console.log("response", response);
+            return response;
         }, function errorCallback(response) {
-            console.log("response", response);
+            return alert("This request was unsucessful please check to make sure all of your information inside the form is correct and try again.");
         });
-    }
+    };
 
 
     UserService.getUser = function () {
@@ -25,7 +25,6 @@ function UserService($http) {
             method: 'GET',
             url: '/user/GetCurrentUser'
         }).then(function successCallback(response) {
-            debugger;
             return response.data;
         }, function errorCallback(response) {
             console.log(response);

@@ -5,7 +5,8 @@ function CreateNewUserController($scope, UserService) {
     $scope.CreateUserViewModel = {};
     $scope.update = function (CreateUserViewModel) {
         UserService.postUser(CreateUserViewModel).then(function (response) {
-            window.location = "/";
+            debugger;
+            //window.location = "/";
         });
     };
 }
