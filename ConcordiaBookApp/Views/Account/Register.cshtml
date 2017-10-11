@@ -1,17 +1,20 @@
 ﻿<div class="row">
     <div ng-controller="CreateNewUserController">
-        <form novalidate class="simple-form">
-            <label>Email: <input type="text" ng-model="CreateUserViewModel.Email" /></label><br />
-            <label>Password: <input type="password" ng-model="CreateUserViewModel.Password" /></label><br />
-            <label>Confirm Password: <input type="password" ng-model="CreateUserViewModel.ConfirmPassword" /></label><br />
-            <label>First Name: <input type="text" ng-model="CreateUserViewModel.FirstName" /></label><br />
-            <label>Last Name: <input type="text" ng-model="CreateUserViewModel.LastName" /></label><br />
-            <label>Phone: <input type="text" ng-model="CreateUserViewModel.Phone" /></label><br />
-            <label>Address: <input type="text" ng-model="CreateUserViewModel.Address" /></label><br />
-            <label>City: <input type="text" ng-model="CreateUserViewModel.City" /></label><br />
-            <label>State: <input type="text" ng-model="CreateUserViewModel.State" /></label><br />
-            <label>ZipCode: <input type="number" ng-model="CreateUserViewModel.ZipCode" /></label><br />
-            <input type="submit" ng-click="update(CreateUserViewModel)" value="Save" />
-        </form>
+        <div ng-show="error">{{error}}</div>
+        <div ng-hide="error">
+            <form novalidate class="simple-form">
+                <label>Email: <input type="text" ng-model="CreateUserViewModel.Email" /></label><br />
+                <label>Password: <input type="password" ng-model="CreateUserViewModel.Password" /></label><br />
+                <label>Confirm Password: <input type="password" ng-model="CreateUserViewModel.ConfirmPassword" /></label><br />
+                <label>First Name: <input type="text" ng-model="CreateUserViewModel.FirstName" /></label><br />
+                <label>Last Name: <input type="text" ng-model="CreateUserViewModel.LastName" /></label><br />
+                <label>Phone: <input type="text" ng-model="CreateUserViewModel.Phone" /></label><br />
+                <label>Address: <input type="text" ng-model="CreateUserViewModel.Address" /></label><br />
+                <label>City: <input type="text" ng-model="CreateUserViewModel.City" /></label><br />
+                <label>State: <input type="text" ng-model="CreateUserViewModel.State" /></label><br />
+                <label>ZipCode: <input type="number" ng-model="CreateUserViewModel.ZipCode" /></label><br />
+                <input type="submit" ng-click="update(CreateUserViewModel)" value="Save" />
+            </form>
+        </div>
     </div>
 </div>

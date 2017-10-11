@@ -11,6 +11,7 @@ using Microsoft.Owin.Security;
 using ConcordiaBookApp.Models;
 using SendGrid.Helpers.Mail;
 using System.Net;
+using System.Collections.Generic;
 
 namespace ConcordiaBookApp.Controllers
 {
@@ -154,7 +155,7 @@ namespace ConcordiaBookApp.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> RegisterNewUser([System.Web.Http.FromBody]CreateUserViewModel model)
+        public async Task<JsonResult> RegisterNewUser([System.Web.Http.FromBody]CreateUserViewModel model)
         {
 
                 var profile = new UserProfile
@@ -168,26 +169,43 @@ namespace ConcordiaBookApp.Controllers
                     ZipCode = model.ZipCode
                 };
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email, UserProfile = profile};
+                try
+            {
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
                     //await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
 
-                // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
-                // Send an email with this link
-                string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+                    // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
+                    // Send an email with this link
+                    string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                    var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                    await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
-                ViewBag.Message = "Check your email and confirm your account, you must be confirmed "
-                     + "before you can log in.";
+                    ViewBag.Message = "Check your email and confirm your account, you must be confirmed "
+                         + "before you can log in.";
 
-                return View();
+                    return Json(result);
+                }
+                else
+                {
+                    throw new Exception(result.Errors.First());
+                }
+
             }
-                AddErrors(result);
-
-            // If we got this far, something failed, redisplay form
-            return View(model);
+            catch(Exception ex)
+            {
+                JsonResult jsonOutput = Json(
+                    new
+                    {
+                        error = new
+                        {
+                            message = ex.Message
+                        }
+                    });
+                return jsonOutput;
+            }
+              
         }
 
         //

@@ -13,9 +13,7 @@ function UserService($http) {
                 "Content-Type": "application/json"
             }
         }).then(function successCallback(response) {
-            console.log("response", response);
-        }, function errorCallback(response) {
-            console.log("response", response);
+            return response;
         });
     }
 
