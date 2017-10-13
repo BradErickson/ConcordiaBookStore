@@ -93,32 +93,25 @@ namespace ConcordiaBookApp.Controllers
                 Quantity = book.Quantity,
                 Description = book.Description,
                 PhotoUrl = book.PhotoUrl,
-                Authors = authors
+                Authors = authors,
                 };
-            var addBookToStore = new BooksInStore
-            {
-                Version = bookinfo.Version,
-                ISBN = bookinfo.ISBN,
-                Genre = bookinfo.Genre,
-                SellingPrice = bookinfo.SellingPrice,
-                RentingPrice = bookinfo.RentingPrice,
-                AvailableTrade = bookinfo.AvailableTrade,
-                Title = bookinfo.Title,
-                Quantity = bookinfo.Quantity,
-                Description = bookinfo.Description,
-                PhotoUrl = bookinfo.PhotoUrl,
-                Authors = bookinfo.Authors
-            };
+         
             var currentUserId = User.Identity.GetUserId();
             var up = db.UserProfiles.FirstOrDefault(x => x.UserId == currentUserId);
+            var addBookToStore = new BooksInStore
+            {
+                Book = bookinfo,
+                user = up
+            };
+            var bookstore = new List<BooksInStore>();
+            bookstore.Add(addBookToStore);
             if (bookinfo == null)
             {
                 return Json(bookinfo);
             }
             else
-            {
-                up.BooksInStore.Add(addBookToStore);
-                bookinfo.BookSellerId = up.UserId;
+            { 
+                bookinfo.BookStore = bookstore;
                 db.Books.Add(bookinfo);
                 db.SaveChanges();
 

@@ -71,12 +71,12 @@ namespace ConcordiaBookApp.Controllers
                     State = result.State,
                     ZipCode = result.ZipCode,
                     BookRentals = new List<BookRent>(),
-                    BooksForSale = new List<BooksInStore>()
+                    BooksForSale = new List<BookStore>()
                 };
                 foreach (var r in result.BookRentals)
                 {
                     var b = new BookRent();
-                     b.Title = r.RentedBook.Title;
+                    b.Title = r.RentedBook.Title;
                     b.Description = r.RentedBook.Description;
                     b.Version = r.RentedBook.Version;
                     b.ISBN = r.RentedBook.ISBN;
@@ -89,19 +89,20 @@ namespace ConcordiaBookApp.Controllers
                 }
                 foreach (var a in result.BooksInStore)
                 {
-                    var c = new BooksInStore();
-                    c.Title = a.Title;
-                    c.Description = a.Description;
-                    c.Version = a.Version;
-                    c.ISBN = a.ISBN;
-                    c.Genre = a.Genre;
-                    c.SellingPrice = a.SellingPrice;
-                    c.RentingPrice = a.RentingPrice;
-                    c.AvailableTrade = a.AvailableTrade;
+                    var c = new BookStore();
+                    c.Title = a.Book.Title;
+                    c.Description = a.Book.Description;
+                    c.Version = a.Book.Version;
+                    c.ISBN = a.Book.ISBN;
+                    c.Genre = a.Book.Genre;
+                    c.SellingPrice = a.Book.SellingPrice;
+                    c.RentingPrice = a.Book.RentingPrice;
+                    c.AvailableTrade = a.Book.AvailableTrade;
                     currentUserProfile.BooksForSale.Add(c);
                 }
 
                 return Json(currentUserProfile, JsonRequestBehavior.AllowGet);
+
             } catch(Exception ex)
             {
                 return Json(ex);
@@ -118,7 +119,18 @@ namespace ConcordiaBookApp.Controllers
             public double RentingPrice { get; set; }
             public bool AvailableTrade { get; set; }
         }
-
+        
+        public class BookStore
+        {
+            public string Title { get; set; }
+            public string Description { get; set; }
+            public double Version { get; set; }
+            public int ISBN { get; set; }
+            public string Genre { get; set; }
+            public double SellingPrice { get; set; }
+            public double RentingPrice { get; set; }
+            public bool AvailableTrade { get; set; }
+        }
         public class GetUser
         {
             public string FirstName { get; set; }
@@ -129,7 +141,7 @@ namespace ConcordiaBookApp.Controllers
             public string State { get; set; }
             public int ZipCode { get; set; }
             public List<BookRent> BookRentals { get; set; }
-            public List<BooksInStore> BooksForSale { get; set; }
+            public List<BookStore> BooksForSale { get; set; }
         }
         [HttpPost]
         [System.Web.Http.Route("User/RegisterNewUser")]

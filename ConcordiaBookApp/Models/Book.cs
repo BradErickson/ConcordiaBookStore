@@ -23,6 +23,6 @@ namespace ConcordiaBookApp.Models
         public string PhotoUrl { get; set; }
         public virtual ICollection<Author> Authors { get; set; }
         public virtual ICollection<BookRental> Rentals { get; set; }
-        public virtual string BookSellerId { get; set; }
+        public virtual ICollection<BooksInStore> BookStore { get; set; }
     }
 }
