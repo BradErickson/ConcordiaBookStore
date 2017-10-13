@@ -57,45 +57,55 @@ namespace ConcordiaBookApp.Controllers
         [System.Web.Http.Route("User/GetCurrentUser")]
         public JsonResult GetCurrentUser() 
         {
-            var currentUserId = User.Identity.GetUserId();
-            var result = db.UserProfiles.FirstOrDefault(x => x.UserId == currentUserId);
-            var currentUserProfile = new GetUser
+            try
             {
-                FirstName = result.FirstName,
-                LastName = result.LastName,
-                Phone = result.Phone,
-                Address = result.Address,
-                City = result.City,
-                State = result.State,
-                ZipCode = result.ZipCode,
-                BookRentals = new List<BookRental>(),
-                BooksForSale = new List<BooksInStore>()
-            };
-            foreach(var r in result.BookRentals)
+                var currentUserId = User.Identity.GetUserId();
+                var result = db.UserProfiles.FirstOrDefault(x => x.UserId == currentUserId);
+                var currentUserProfile = new GetUser
+                {
+                    FirstName = result.FirstName,
+                    LastName = result.LastName,
+                    Phone = result.Phone,
+                    Address = result.Address,
+                    City = result.City,
+                    State = result.State,
+                    ZipCode = result.ZipCode,
+                    BookRentals = new List<BookRent>(),
+                    BooksForSale = new List<BooksInStore>()
+                };
+                foreach (var r in result.BookRentals)
+                {
+                    var b = new BookRent();
+                     b.Title = r.RentedBook.Title;
+                    b.Description = r.RentedBook.Description;
+                    b.Version = r.RentedBook.Version;
+                    b.ISBN = r.RentedBook.ISBN;
+                    b.Genre = r.RentedBook.Genre;
+                    b.SellingPrice = r.RentedBook.SellingPrice;
+                    b.RentingPrice = r.RentedBook.RentingPrice;
+                    b.AvailableTrade = r.RentedBook.AvailableTrade;
+
+                    currentUserProfile.BookRentals.Add(b);
+                }
+                foreach (var a in result.BooksInStore)
+                {
+                    var c = new BooksInStore();
+                    c.Title = a.Title;
+                    c.Description = a.Description;
+                    c.Version = a.Version;
+                    c.ISBN = a.ISBN;
+                    c.Genre = a.Genre;
+                    c.SellingPrice = a.SellingPrice;
+                    c.RentingPrice = a.RentingPrice;
+                    c.AvailableTrade = a.AvailableTrade;
+                    currentUserProfile.BooksForSale.Add(c);
+                }
+
+                return Json(currentUserProfile, JsonRequestBehavior.AllowGet);
+            } catch(Exception ex)
             {
-                var b = new BookRental();
-                b.Title = r.Title;
-                b.Description = r.Description;
-                b.Version = r.Version;
-                b.ISBN = r.ISBN;
-                b.Genre = r.Genre;
-                b.RentingPrice = r.RentingPrice;
-                currentUserProfile.BookRentals.Add(b);
+                return Json(ex);
             }
-            foreach (var a in result.BooksInStore)
-            {
-                var c = new BooksInStore();
-                c.Title = a.Title;
-                c.Description = a.Description;
-                c.Version = a.Version;
-                c.ISBN = a.ISBN;
-                c.Genre = a.Genre;
-                c.SellingPrice = a.SellingPrice;
-                c.RentingPrice = a.RentingPrice;
-                c.AvailableTrade = a.AvailableTrade;
-                currentUserProfile.BooksForSale.Add(c);
-            }
-            return Json(currentUserProfile, JsonRequestBehavior.AllowGet);
 
         }
         public class BookRent {
@@ -118,7 +128,7 @@ namespace ConcordiaBookApp.Controllers
             public string City { get; set; }
             public string State { get; set; }
             public int ZipCode { get; set; }
-            public List<BookRental> BookRentals { get; set; }
+            public List<BookRent> BookRentals { get; set; }
             public List<BooksInStore> BooksForSale { get; set; }
         }
         [HttpPost]
