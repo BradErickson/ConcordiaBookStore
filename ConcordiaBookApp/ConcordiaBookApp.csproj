@@ -236,6 +236,10 @@
     <Compile Include="Migrations\201710131736356_bookinbookrental3.Designer.cs">
       <DependentUpon>201710131736356_bookinbookrental3.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201710132033236_bookstore.cs" />
+    <Compile Include="Migrations\201710132033236_bookstore.Designer.cs">
+      <DependentUpon>201710132033236_bookstore.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AddBookVm.cs" />
@@ -1135,6 +1139,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201710131736356_bookinbookrental3.resx">
       <DependentUpon>201710131736356_bookinbookrental3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710132033236_bookstore.resx">
+      <DependentUpon>201710132033236_bookstore.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

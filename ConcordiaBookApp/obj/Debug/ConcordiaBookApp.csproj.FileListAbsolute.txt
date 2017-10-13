@@ -181,3 +181,4 @@ C:\Users\brade\Documents\Visual Studio 2015\Projects\ConcordiaBookStore\Concordi
 C:\Users\brade\Documents\Visual Studio 2015\Projects\ConcordiaBookStore\ConcordiaBookApp\obj\Debug\ConcordiaBookApp.Migrations.bookinbookrental.resources
 C:\Users\brade\Documents\Visual Studio 2015\Projects\ConcordiaBookStore\ConcordiaBookApp\obj\Debug\ConcordiaBookApp.Migrations.bookinbookrental2.resources
 C:\Users\brade\Documents\Visual Studio 2015\Projects\ConcordiaBookStore\ConcordiaBookApp\obj\Debug\ConcordiaBookApp.Migrations.bookinbookrental3.resources
+C:\Users\brade\Documents\Visual Studio 2015\Projects\ConcordiaBookStore\ConcordiaBookApp\obj\Debug\ConcordiaBookApp.Migrations.bookstore.resources
