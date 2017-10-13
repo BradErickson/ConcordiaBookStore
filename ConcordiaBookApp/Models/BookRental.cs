@@ -8,15 +8,8 @@ namespace ConcordiaBookApp.Models
 {
     public class BookRental
     {
-            [Key]
-            public int BookId { get; set; }
-            public string Title { get; set; }
-            public string Description { get; set; }
-            public double Version { get; set; }
-            public int ISBN { get; set; }
-            public string Genre { get; set; }
-            public double RentingPrice { get; set; }
-            public virtual ICollection<Author> Authors { get; set; }
+            public int BookRentalId { get; set; } 
+            public virtual Book RentedBook { get; set; }
             public virtual UserProfile owner { get; set; }
     }
 }

@@ -140,19 +140,17 @@ namespace ConcordiaBookApp.Controllers
             Book book = db.Books.Find(id);
             book.Quantity -= 1;
 
-            var bookRent = new BookRental
-            {
-                BookId = book.BookId,
-                Title = book.Title,
-                Description = book.Description,
-                Version = book.Version,
-                ISBN = book.ISBN,
-                Genre = book.Genre,
-                RentingPrice = book.RentingPrice
-            };
+          
             
             var currentUserId = User.Identity.GetUserId();
             var up = db.UserProfiles.FirstOrDefault(x => x.UserId == currentUserId);
+
+            var bookRent = new BookRental
+            {
+                owner = up,
+                RentedBook = book
+            };
+
             if (book == null)
             {
                 return "Fail no Book";

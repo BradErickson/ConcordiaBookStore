@@ -220,6 +220,22 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201710131657468_intial.cs" />
+    <Compile Include="Migrations\201710131657468_intial.Designer.cs">
+      <DependentUpon>201710131657468_intial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710131709053_bookinbookrental.cs" />
+    <Compile Include="Migrations\201710131709053_bookinbookrental.Designer.cs">
+      <DependentUpon>201710131709053_bookinbookrental.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710131736088_bookinbookrental2.cs" />
+    <Compile Include="Migrations\201710131736088_bookinbookrental2.Designer.cs">
+      <DependentUpon>201710131736088_bookinbookrental2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710131736356_bookinbookrental3.cs" />
+    <Compile Include="Migrations\201710131736356_bookinbookrental3.Designer.cs">
+      <DependentUpon>201710131736356_bookinbookrental3.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AddBookVm.cs" />
@@ -1106,6 +1122,20 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201710131657468_intial.resx">
+      <DependentUpon>201710131657468_intial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710131709053_bookinbookrental.resx">
+      <DependentUpon>201710131709053_bookinbookrental.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710131736088_bookinbookrental2.resx">
+      <DependentUpon>201710131736088_bookinbookrental2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710131736356_bookinbookrental3.resx">
+      <DependentUpon>201710131736356_bookinbookrental3.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
