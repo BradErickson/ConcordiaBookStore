@@ -95,7 +95,20 @@ namespace ConcordiaBookApp.Controllers
                 PhotoUrl = book.PhotoUrl,
                 Authors = authors
                 };
-
+            var addBookToStore = new BooksInStore
+            {
+                Version = bookinfo.Version,
+                ISBN = bookinfo.ISBN,
+                Genre = bookinfo.Genre,
+                SellingPrice = bookinfo.SellingPrice,
+                RentingPrice = bookinfo.RentingPrice,
+                AvailableTrade = bookinfo.AvailableTrade,
+                Title = bookinfo.Title,
+                Quantity = bookinfo.Quantity,
+                Description = bookinfo.Description,
+                PhotoUrl = bookinfo.PhotoUrl,
+                Authors = bookinfo.Authors
+            };
             var currentUserId = User.Identity.GetUserId();
             var up = db.UserProfiles.FirstOrDefault(x => x.UserId == currentUserId);
             if (bookinfo == null)
@@ -104,8 +117,8 @@ namespace ConcordiaBookApp.Controllers
             }
             else
             {
-                up.BooksInStore.Add(bookinfo);
-                bookinfo.BookSellerId = up;
+                up.BooksInStore.Add(addBookToStore);
+                bookinfo.BookSellerId = up.UserId;
                 db.Books.Add(bookinfo);
                 db.SaveChanges();
 
@@ -126,6 +139,18 @@ namespace ConcordiaBookApp.Controllers
             }
             Book book = db.Books.Find(id);
             book.Quantity -= 1;
+
+            var bookRent = new BookRental
+            {
+                BookId = book.BookId,
+                Title = book.Title,
+                Description = book.Description,
+                Version = book.Version,
+                ISBN = book.ISBN,
+                Genre = book.Genre,
+                RentingPrice = book.RentingPrice
+            };
+            
             var currentUserId = User.Identity.GetUserId();
             var up = db.UserProfiles.FirstOrDefault(x => x.UserId == currentUserId);
             if (book == null)
@@ -134,12 +159,48 @@ namespace ConcordiaBookApp.Controllers
             }
             else
             {
-                up.BookRentals.Add(book);
+                up.BookRentals.Add(bookRent);
+                
                 db.SaveChanges();
                 return "success";    
             }
             
         }
+
+
+        //// GET: Books/Edit/5
+        //[System.Web.Http.HttpDelete]
+        //[System.Web.Http.Route("Books/SellBook/{id}")]
+        //public JsonResult SellBook(int? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return Json("Fail No Id provided");
+        //    }
+        //    Book book = db.Books.Find(id);
+        //    if (book.Quantity > 1)
+        //    {
+        //        book.Quantity -= 1;
+        //    }
+        //    else
+        //    {
+        //        db.Books.Remove(book);
+        //    }
+        //    var currentUserId = User.Identity.GetUserId();
+        //    var up = db.UserProfiles.FirstOrDefault(x => x.UserId == book.BookSellerId);
+        //    if (book == null)
+        //    {
+        //        return Json("Fail no Book");
+        //    }
+        //    else
+        //    {
+        //        book.Quantity = 1;
+        //        up.BooksSold.Add(book);
+        //        db.SaveChanges();
+        //        return Json("success");
+        //    }
+
+        //}
 
         // POST: Books/Delete/5
         [System.Web.Http.HttpDelete]

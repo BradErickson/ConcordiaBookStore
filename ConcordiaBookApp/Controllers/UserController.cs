@@ -68,25 +68,23 @@ namespace ConcordiaBookApp.Controllers
                 City = result.City,
                 State = result.State,
                 ZipCode = result.ZipCode,
-                Books = new List<BookRent>(),
-                BooksForSale = new List<BookRent>()
+                BookRentals = new List<BookRental>(),
+                BooksForSale = new List<BooksInStore>()
             };
             foreach(var r in result.BookRentals)
             {
-                var b = new BookRent();
+                var b = new BookRental();
                 b.Title = r.Title;
                 b.Description = r.Description;
                 b.Version = r.Version;
                 b.ISBN = r.ISBN;
                 b.Genre = r.Genre;
-                b.SellingPrice = r.SellingPrice;
                 b.RentingPrice = r.RentingPrice;
-                b.AvailableTrade = r.AvailableTrade;
-                currentUserProfile.Books.Add(b);
+                currentUserProfile.BookRentals.Add(b);
             }
             foreach (var a in result.BooksInStore)
             {
-                var c = new BookRent();
+                var c = new BooksInStore();
                 c.Title = a.Title;
                 c.Description = a.Description;
                 c.Version = a.Version;
@@ -120,8 +118,8 @@ namespace ConcordiaBookApp.Controllers
             public string City { get; set; }
             public string State { get; set; }
             public int ZipCode { get; set; }
-            public List<BookRent> Books { get; set; }
-            public List<BookRent> BooksForSale { get; set; }
+            public List<BookRental> BookRentals { get; set; }
+            public List<BooksInStore> BooksForSale { get; set; }
         }
         [HttpPost]
         [System.Web.Http.Route("User/RegisterNewUser")]
@@ -136,7 +134,8 @@ namespace ConcordiaBookApp.Controllers
                 Address = model.Address,
                 City = model.City,
                 State = model.State,
-                ZipCode = model.ZipCode
+                ZipCode = model.ZipCode,
+                
             };
             var user = new ApplicationUser { UserName = model.Email, Email = model.Email, UserProfile = profile };
             var result = await UserManager.CreateAsync(user, model.Password);

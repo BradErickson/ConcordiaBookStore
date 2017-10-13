@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Data.Entity;
 using System.Linq;
 using System.Web;
 
 namespace ConcordiaBookApp.Models
 {
-    public class Book
+    public class BooksInStore
     {
         [Key]
         public int BookId { get; set; }
@@ -22,6 +21,6 @@ namespace ConcordiaBookApp.Models
         public bool AvailableTrade { get; set; }
         public string PhotoUrl { get; set; }
         public virtual ICollection<Author> Authors { get; set; }
-        public virtual string BookSellerId { get; set; }
+        public virtual UserProfile user { get; set; }
     }
 }

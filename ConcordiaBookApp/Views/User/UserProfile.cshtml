@@ -58,18 +58,16 @@
                         <th>Genre</th>
                         <th>Description</th>
                         <th>Version</th>
-                        <th>Selling Price</th>
                         <th>Renting Price</th>
                     </tr>
                 </thead>
-                <tbody ng-if"showBooks" ng-repeat="book in user.Books">
+                <tbody ng-if"showBooks" ng-repeat="book in user.BookRentals">
                     <tr>
                         <td>{{book.Title}}</td>
                         <td>{{book.ISBN}}</td>
                         <td>{{book.Genre}}</td>
                         <td>{{book.Description}}</td>
                         <td>{{book.Version}}</td>
-                        <td>{{book.SellingPrice}}</td>
                         <td>{{book.RentingPrice}}</td>
                     </tr>
                 </tbody>
