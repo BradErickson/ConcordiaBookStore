@@ -225,6 +225,9 @@
     <Compile Include="Models\AddBookVm.cs" />
     <Compile Include="Models\Author.cs" />
     <Compile Include="Models\Book.cs" />
+    <Compile Include="Models\BookRental.cs" />
+    <Compile Include="Models\BooksInStore.cs" />
+    <Compile Include="Models\BooksSold.cs" />
     <Compile Include="Models\CreateUserViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
