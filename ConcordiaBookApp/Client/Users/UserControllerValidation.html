@@ -1,0 +1,94 @@
+﻿<!DOCTYPE html>
+<html>
+<body>
+
+    <h2>Create User Form Validation</h2>
+
+    <form ng-app="myApp" ng-controller="validateCtrl"
+          name="myForm" novalidate>
+
+        <p>
+            Firstname:
+            <br>
+            <input type="text" name="fname" ng-model="Erick" required>
+            <span style="color:red" ng-show="myForm.fname.$dirty && myForm.fname.$invalid">
+                <span ng-show="myForm.fname.$error.required">Firstname is required</span>
+            </span>
+        </p>
+
+        <p>
+            Lastname:
+            <br>
+            <input type="text" name="lname" ng-model="Kivi" required>
+            <span style="color:red" ng-show="myForm.user.$dirty && myForm.user.$invalid">
+                <span ng-show="myForm.lname.$error.required">Lastname is required</span>
+            </span>
+        </p>
+
+        <p>
+            Email:
+            <br>
+            <input type="email" name="email" ng-model="email" required>
+            <span style="color:red" ng-show="myForm.email.$dirty && myForm.email.$invalid">
+                <span ng-show="myForm.email.$error.required">Email is required</span>
+                <span ng-show="myForm.email.$error.email">Invalid email address</span>
+            </span>
+        </p>
+
+        <p>
+            Address:
+            <br>
+            <input type="text" name="address" ng-model="123 Main St" required>
+            <span style="color:red" ng-show="myForm.address.$dirty && myForm.address.$invalid">
+                <span ng-show="myForm.adddress.$error.required">Address is required</span>
+            </span>
+        </p>
+
+        <p>
+            City:
+            <br>
+            <input type="text" name="city" ng-model="St. Paul" required>
+            <span style="color:red" ng-show="myForm.city.$dirty && myForm.city.$invalid">
+                <span ng-show="myForm.user.$error.required">City is required</span>
+            </span>
+        </p>
+
+        <p>
+            State:
+            <br>
+            <input type="text" name="state" ng-model="Minnesota" required>
+            <span style="color:red" ng-show="myForm.state.$dirty && myForm.state.$invalid">
+                <span ng-show="myForm.state.$error.required">State is required</span>
+            </span>
+        </p>
+
+        <p>
+            Zip Code:
+            <br>
+            <input type="text" name="zip" ng-model="55104" required>
+            <span style="color:red" ng-show="myForm.zip.$dirty && myForm.zip.$invalid">
+                <span ng-show="myForm.zip.$error.required">Zip Code is required</span>
+            </span>
+        </p>
+
+        <p>
+            <input type="submit"
+                   ng-disabled="myForm.fname.$dirty && myForm.fname.$invalid || myForm.lname.$dirty && myForm.lname.$invalid || myForm.email.$dirty && myForm.email.$invalid || myForm.address.$dirty && myForm.address.$invalid || myForm.city.$dirty && myForm.city.$invalid || myForm.state.$dirty && myForm.state.$invalid || myForm.zip.$dirty && myForm.zip.$invalid" >
+        </p>
+
+    </form>
+        <script>
+            var app = angular.module('myApp', []);
+        app.controller('validateCtrl', function ($scope) {
+            $scope.fname = 'Erick';
+            $scope.lname = 'Kivi';
+            $scope.email = 'kivie@csp.edu';
+            $scope.address = '123 Main St';
+            $scope.city = 'St. Paul';
+            $scope.state = 'Minnesota';
+            $scope.zip = '55104';
+        });
+    </script>
+
+</body>
+</html>
