@@ -2,18 +2,87 @@
     <div ng-controller="CreateNewUserController">
         <div ng-show="error">{{error}}</div>
         <div ng-hide="error">
-            <form novalidate class="simple-form">
-                <label>Email: <input type="text" ng-model="CreateUserViewModel.Email" /></label><br />
-                <label>Password: <input type="password" ng-model="CreateUserViewModel.Password" /></label><br />
-                <label>Confirm Password: <input type="password" ng-model="CreateUserViewModel.ConfirmPassword" /></label><br />
-                <label>First Name: <input type="text" ng-model="CreateUserViewModel.FirstName" /></label><br />
-                <label>Last Name: <input type="text" ng-model="CreateUserViewModel.LastName" /></label><br />
-                <label>Phone: <input type="text" ng-model="CreateUserViewModel.Phone" /></label><br />
-                <label>Address: <input type="text" ng-model="CreateUserViewModel.Address" /></label><br />
-                <label>City: <input type="text" ng-model="CreateUserViewModel.City" /></label><br />
-                <label>State: <input type="text" ng-model="CreateUserViewModel.State" /></label><br />
-                <label>ZipCode: <input type="number" ng-model="CreateUserViewModel.ZipCode" /></label><br />
-                <input type="submit" ng-click="update(CreateUserViewModel)" value="Save" />
+            <h2>Create A New User</h2>
+            <form name="myForm" novalidate>
+                <p>
+                    Email:
+                    <br>
+                    <input type="email" name="email" ng-model="CreateUserViewModel.Email" required>
+                    <span style="color:red" ng-show="myForm.email.$dirty && myForm.email.$invalid">
+                        <span ng-show="myForm.email.$error.required">Email is required</span>
+                        <span ng-show="myForm.email.$error.email">Invalid email address</span>
+                    </span>
+                </p>
+                <p>
+                    Password:
+                    <br>
+                    <input type="password" name="Password" ng-model="CreateUserViewModel.Password" required>
+                    <span style="color:red" ng-show="myForm.Password.$dirty && myForm.Password.$invalid">
+                        <span ng-show="myForm.Password.$error.required">Password is required</span>
+                        <span ng-show="myForm.Password.$error.email">Invalid Password</span>
+                    </span>
+                </p>
+                <p>
+                    Confirm Password:
+                    <br>
+                    <input type="password" name="ConfirmPassword" ng-model="CreateUserViewModel.ConfirmPassword" required>
+                    <span style="color:red" ng-show="myForm.email.ConfirmPassword && myForm.email.ConfirmPassword">
+                        <span ng-show="myForm.ConfirmPassword.$error.required">Email is required</span>
+                        <span ng-show="myForm.ConfirmPassword.$error.email">Invalid Password</span>
+                    </span>
+                </p>
+                <p>
+                    First name:
+                    <br>
+                    <input type="text" name="fname" ng-model="CreateUserViewModel.FirstName" required>
+                    <span style="color:red" ng-show="myForm.fname.$dirty && myForm.fname.$invalid">
+                        <span ng-show="myForm.fname.$error.required">First name is required</span>
+                    </span>
+                </p>
+                <p>
+                    Last name:
+                    <br>
+                    <input type="text" name="lname" ng-model="CreateUserViewModel.LastName" required>
+                    <span style="color:red" ng-show="myForm.user.$dirty && myForm.user.$invalid">
+                        <span ng-show="myForm.lname.$error.required">Last name is required</span>
+                    </span>
+                </p>
+                <p>
+                    Address:
+                    <br>
+                    <input type="text" name="address" ng-model="CreateUserViewModel.Address" required>
+                    <span style="color:red" ng-show="myForm.address.$dirty && myForm.address.$invalid">
+                        <span ng-show="myForm.adddress.$error.required">Address is required</span>
+                    </span>
+                </p>
+                <p>
+                    City:
+                    <br>
+                    <input type="text" name="city" ng-model="CreateUserViewModel.City" required>
+                    <span style="color:red" ng-show="myForm.city.$dirty && myForm.city.$invalid">
+                        <span ng-show="myForm.user.$error.required">City is required</span>
+                    </span>
+                </p>
+                <p>
+                    State:
+                    <br>
+                    <input type="text" name="state" ng-model="CreateUserViewModel.State" required>
+                    <span style="color:red" ng-show="myForm.state.$dirty && myForm.state.$invalid">
+                        <span ng-show="myForm.state.$error.required">State is required</span>
+                    </span>
+                </p>
+                <p>
+                    Zip Code:
+                    <br>
+                    <input type="text" name="zip" ng-model="CreateUserViewModel.ZipCode" required>
+                    <span style="color:red" ng-show="myForm.zip.$dirty && myForm.zip.$invalid">
+                        <span ng-show="myForm.zip.$error.required">Zip Code is required</span>
+                    </span>
+                </p>
+                <p>
+                    <input type="submit"
+                           ng-disabled="myForm.fname.$dirty && myForm.fname.$invalid || myForm.password.$dirty && myForm.ConfirmPassword.$invalid || myForm.ConfirmPassword.$dirty && myForm.password.$invalid || myForm.lname.$dirty && myForm.lname.$invalid || myForm.email.$dirty && myForm.email.$invalid || myForm.address.$dirty && myForm.address.$invalid || myForm.city.$dirty && myForm.city.$invalid || myForm.state.$dirty && myForm.state.$invalid || myForm.zip.$dirty && myForm.zip.$invalid" ng-click="update(CreateUserViewModel)" value="Save">
+                </p>
             </form>
         </div>
     </div>
