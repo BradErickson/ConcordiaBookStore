@@ -1,19 +1,27 @@
-﻿<div class="row">
+﻿<!-- &nbsp; is an HTML tag that means to add a non break space-->
+<div class="row">
     <div ng-controller="CreateNewUserController">
         <div ng-show="error">{{error}}</div>
         <div ng-hide="error">
             <form novalidate class="simple-form">
-                <label>Email: <input type="text" ng-model="CreateUserViewModel.Email" /></label><br />
-                <label>Password: <input type="password" ng-model="CreateUserViewModel.Password" /></label><br />
-                <label>Confirm Password: <input type="password" ng-model="CreateUserViewModel.ConfirmPassword" /></label><br />
-                <label>First Name: <input type="text" ng-model="CreateUserViewModel.FirstName" /></label><br />
-                <label>Last Name: <input type="text" ng-model="CreateUserViewModel.LastName" /></label><br />
-                <label>Phone: <input type="text" ng-model="CreateUserViewModel.Phone" /></label><br />
-                <label>Address: <input type="text" ng-model="CreateUserViewModel.Address" /></label><br />
-                <label>City: <input type="text" ng-model="CreateUserViewModel.City" /></label><br />
-                <label>State: <input type="text" ng-model="CreateUserViewModel.State" /></label><br />
-                <label>ZipCode: <input type="number" ng-model="CreateUserViewModel.ZipCode" /></label><br />
-                <input type="submit" ng-click="update(CreateUserViewModel)" value="Save" />
+                <fieldset>
+                    <label for="firstName">First Name: <input type="text" id="firstName" class="twoColumn" ng-model="CreateUserViewModel.FirstName"/></label> &nbsp;&nbsp;&nbsp;&nbsp;
+                    <label for="lastName">Last Name: <input type="text" id="lastName" class="twoColumn" ng-model="CreateUserViewModel.LastName"/></label><br/>
+
+                    <label for="address">Address: <input type="text" id="address" class="oneColumn" ng-model="CreateUserViewModel.Address" /></label><br />
+                    
+                    <label for="city">City: <input type="text" id="city" class="threeColumn" ng-model="CreateUserViewModel.City" /></label>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <label for="state">State: <input type="text" id="state" class="threeColumn" ng-model="CreateUserViewModel.State" /></label>&nbsp;&nbsp;&nbsp;&nbsp; <!-- TODO make state a drop down of all different states-->
+                    <label for="zipcode">ZipCode: <input type="number" id="zipcode" class="threeColumn" ng-model="CreateUserViewModel.ZipCode" /></label><br />
+                    
+                    <label for="phone">Phone: <input type="text" id="phone" ng-model="CreateUserViewModel.Phone" /></label><br />
+                    <label for="email" title="Must have a valid CSP.edu email to create an account ">Email: <input type="text" id="email" class="oneColumn" ng-model="CreateUserViewModel.Email" /></label><br />
+                    
+                    <label for="password">Password: <input type="password" id="password" class="twoColumn" ng-model="CreateUserViewModel.Password" /></label> &nbsp;&nbsp;&nbsp;&nbsp;
+                    <label for="confirmPassword">Confirm Password: <input type="password" class="twoColumn" id="confirmPassword" ng-model="CreateUserViewModel.ConfirmPassword" /></label><br />
+
+                    <input type="submit" ng-click="update(CreateUserViewModel)" value="Save" />
+                </fieldset>
             </form>
         </div>
     </div>
