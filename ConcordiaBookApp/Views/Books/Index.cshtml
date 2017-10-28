@@ -3,6 +3,24 @@
         @Html.ActionLink("Create", "Create")
         <div class="container">
             <h2>Available Books</h2>
+            <!-- book search function, added the table that includes the option value, and the input query -->
+            <table>
+                <tr>
+                    <td align="right">Search By :</td>
+                    <td>
+                        <select ng-model="queryBy">
+                            <option value="$"></option>
+                            <option value="title">Title</option>
+                            <option value="isbn">ISBN</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="right">Search :</td>
+                    <td><input ng-model="query[queryBy]" /></td>
+                </tr>
+            </table>
+
             <table class="table table-hover">
                 <thead>
                         <tr>
@@ -16,8 +34,9 @@
                             <th>Rent Price</th>
                         </tr>
                 </thead>
+                <!-- book search function, added the '| filter:query' -->
                 <tbody>
-                    <tr ng-repeat="book in books">
+                    <tr ng-repeat="book in books | filter:query">
                         <td><img class="cover-photo" src="{{book.photoUrl}}"/></td>
                         <td>{{book.title}}</td>
                         <td ng-repeat="author in book.authors">{{author.name}}</td>
