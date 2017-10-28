@@ -182,6 +182,7 @@ C:\Users\brade\Documents\Visual Studio 2015\Projects\ConcordiaBookStore\Concordi
 C:\Users\brade\Documents\Visual Studio 2015\Projects\ConcordiaBookStore\ConcordiaBookApp\obj\Debug\ConcordiaBookApp.Migrations.bookinbookrental2.resources
 C:\Users\brade\Documents\Visual Studio 2015\Projects\ConcordiaBookStore\ConcordiaBookApp\obj\Debug\ConcordiaBookApp.Migrations.bookinbookrental3.resources
 C:\Users\brade\Documents\Visual Studio 2015\Projects\ConcordiaBookStore\ConcordiaBookApp\obj\Debug\ConcordiaBookApp.Migrations.bookstore.resources
+<<<<<<< HEAD
 C:\Users\Brittany Wimmer\Documents\Visual Studio 2017\Projects\ConcordiaBookStore\ConcordiaBookApp\bin\ApplicationInsights.config
 C:\Users\Brittany Wimmer\Documents\Visual Studio 2017\Projects\ConcordiaBookStore\ConcordiaBookApp\bin\roslyn\Microsoft.CSharp.Core.targets
 C:\Users\Brittany Wimmer\Documents\Visual Studio 2017\Projects\ConcordiaBookStore\ConcordiaBookApp\bin\roslyn\Microsoft.VisualBasic.Core.targets
@@ -279,6 +280,8 @@ C:\Users\Brittany Wimmer\Documents\Visual Studio 2017\Projects\ConcordiaBookStor
 C:\Users\Brittany Wimmer\Documents\Visual Studio 2017\Projects\ConcordiaBookStore\ConcordiaBookApp\obj\Debug\ConcordiaBookApp.csproj.GenerateResource.Cache
 C:\Users\Brittany Wimmer\Documents\Visual Studio 2017\Projects\ConcordiaBookStore\ConcordiaBookApp\obj\Debug\ConcordiaBookApp.dll
 C:\Users\Brittany Wimmer\Documents\Visual Studio 2017\Projects\ConcordiaBookStore\ConcordiaBookApp\obj\Debug\ConcordiaBookApp.pdb
+=======
+>>>>>>> 2866e2e9bb822b30da9d87d9e06e9caaac4aa5da
 C:\Users\Brian\Documents\GitHub\ConcordiaBookStore\ConcordiaBookApp\bin\ApplicationInsights.config
 C:\Users\Brian\Documents\GitHub\ConcordiaBookStore\ConcordiaBookApp\bin\roslyn\csc.exe
 C:\Users\Brian\Documents\GitHub\ConcordiaBookStore\ConcordiaBookApp\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
