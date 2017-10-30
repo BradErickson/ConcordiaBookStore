@@ -1,23 +1,26 @@
 ﻿<div class="row">
     <div ng-controller="CreateBookController">
-        <form novalidate class="simple-form">
-            <label for="title">Title: <input type="text" id="title" class="oneColumn" ng-model="PostBook.Title" /></label><br />
-            <label for="authorName" title="If more then one name is on the book, type in the first name that appears">Author Name: <input type="text" id="authorName" class="oneColumn" ng-model="PostBook.AuthorName" /></label><br />
+        <div ng-show="isLoading" class="loader">loader...</div>
+        <div ng-hide="isLoading">
+            <form novalidate class="simple-form">
+                <label for="title">Title: <input type="text" id="title" class="oneColumn" ng-model="PostBook.Title" /></label><br />
+                <label for="authorName" title="If more then one name is on the book, type in the first name that appears">Author Name: <input type="text" id="authorName" class="oneColumn" ng-model="PostBook.AuthorName" /></label><br />
 
-            <label for="version">Version: <input type="number" id="version" class="threeColumn" ng-model="PostBook.Version" /></label>&nbsp;&nbsp;&nbsp;&nbsp;
-            <label for="isbn">ISBN: <input type="text" id="isbn" class="threeColumn" ng-model="PostBook.ISBN" /></label>&nbsp;&nbsp;&nbsp;&nbsp;
-            <label for="genre">Genre: <input type="text" id="genre" class="threeColumn" ng-model="PostBook.Genre" /></label><br />
-            
-            <label for="sellingPrice">Selling Price: <input type="number" class="twoColumn" id="sellingPrice" ng-model="PostBook.SellingPrice" /></label>&nbsp;&nbsp;&nbsp;&nbsp;
-            <label for="rentalPrice">Rental Price: <input type="number" class="twoColumn" id="rentalPrice" ng-model="PostBook.RentingPrice" /></label><br />
-            
-            <label for="quantity">Quantity: <input type="number" id="quantity" ng-model="PostBook.Quantity" /></label>&nbsp;&nbsp;&nbsp;&nbsp; 
-            <label for="trade" title="If checked, means you are willing to trade this book in exchange for another book">Trade: <input type="checkbox" id="trade" ng-model="PostBook.AvailableTrade" /></label><br />
+                <label for="version">Version: <input type="number" id="version" class="threeColumn" ng-model="PostBook.Version" /></label>&nbsp;&nbsp;&nbsp;&nbsp;
+                <label for="isbn">ISBN: <input type="text" id="isbn" class="threeColumn" ng-model="PostBook.ISBN" /></label>&nbsp;&nbsp;&nbsp;&nbsp;
+                <label for="genre">Genre: <input type="text" id="genre" class="threeColumn" ng-model="PostBook.Genre" /></label><br />
 
-            <label for="coverPhoto">Cover Photo Url: <input type="text" class="oneColumn" id="coverPhoto" ng-model="PostBook.PhotoUrl" /></label><br />
-            <label for="description">Description: <input type="text" class="oneColumn" id="description" ng-model="PostBook.Description" /></label><br />
-            <input type="submit" ng-click="update(PostBook)" value="Save" />
-        </form>
+                <label for="sellingPrice">Selling Price: <input type="number" class="twoColumn" id="sellingPrice" ng-model="PostBook.SellingPrice" /></label>&nbsp;&nbsp;&nbsp;&nbsp;
+                <label for="rentalPrice">Rental Price: <input type="number" class="twoColumn" id="rentalPrice" ng-model="PostBook.RentingPrice" /></label><br />
+
+                <label for="quantity">Quantity: <input type="number" id="quantity" ng-model="PostBook.Quantity" /></label>&nbsp;&nbsp;&nbsp;&nbsp;
+                <label for="trade" title="If checked, means you are willing to trade this book in exchange for another book">Trade: <input type="checkbox" id="trade" ng-model="PostBook.AvailableTrade" /></label><br />
+
+                <label for="coverPhoto">Cover Photo Url: <input type="text" class="oneColumn" id="coverPhoto" ng-model="PostBook.PhotoUrl" /></label><br />
+                <label for="description">Description: <input type="text" class="oneColumn" id="description" ng-model="PostBook.Description" /></label><br />
+                <input type="submit" ng-click="update(PostBook)" value="Save" />
+            </form>
+        </div>
     </div>
 </div>
 

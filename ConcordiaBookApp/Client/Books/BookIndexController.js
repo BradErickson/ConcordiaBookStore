@@ -2,16 +2,17 @@
 .controller("BookIndexController", BookIndexController)
 
 function BookIndexController($scope, BookService) {
+    $scope.isLoading = true;
     getBooks();
     function getBooks() {
         var book = BookService.getBooks().then(function (data) {
             var newData = [];
-            debugger;
             for (var i = 0; i < data.length; i++) {
                 if (data[i].quantity) {
                     newData.push(data[i]);
                 }
             }
+            $scope.isLoading = false;
             $scope.books = newData;
         });
     }

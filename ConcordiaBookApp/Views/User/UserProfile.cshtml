@@ -1,77 +1,80 @@
 ﻿<div class="row">
     <div ng-controller="CurrentUserController">
-        <div class="container">
-            <h2>USER INFO</h2>
-            <table class="table table-hover">
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Phone</th>
-                        <th>Address</th>
-                        <th>City</th>
-                        <th>State</th>
-                        <th>ZipCode</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>{{user.FirstName}} {{user.LastName}}</td>
-                        <td>{{user.Phone}}</td>
-                        <td>{{user.Address}}</td>
-                        <td>{{user.City}}</td>
-                        <td>{{user.State}}</td>
-                        <td>{{user.ZipCode}}</td>
-                    </tr>
-                </tbody>
-            </table>
-            <h2>Books Currently for Sale</h2>
-            <table class="table table-hover">
-                <thead>
-                    <tr>
-                        <th>Title</th>
-                        <th>ISBN</th>
-                        <th>Genre</th>
-                        <th>Description</th>
-                        <th>Version</th>
-                        <th>Selling Price</th>
-                        <th>Renting Price</th>
-                    </tr>
-                </thead>
-                <tbody ng-if"showBooks" ng-repeat="b in user.BooksForSale">
-                    <tr>
-                        <td>{{b.Title}}</td>
-                        <td>{{b.ISBN}}</td>
-                        <td>{{b.Genre}}</td>
-                        <td>{{b.Description}}</td>
-                        <td>{{b.Version}}</td>
-                        <td>{{b.SellingPrice}}</td>
-                        <td>{{b.RentingPrice}}</td>
-                    </tr>
-                </tbody>
-            </table>
-            <h2>Rented Books</h2>
-            <table class="table table-hover">
-                <thead>
-                    <tr>
-                        <th>Title</th>
-                        <th>ISBN</th>
-                        <th>Genre</th>
-                        <th>Description</th>
-                        <th>Version</th>
-                        <th>Renting Price</th>
-                    </tr>
-                </thead>
-                <tbody ng-if"showBooks" ng-repeat="book in user.BookRentals">
-                    <tr>
-                        <td>{{book.Title}}</td>
-                        <td>{{book.ISBN}}</td>
-                        <td>{{book.Genre}}</td>
-                        <td>{{book.Description}}</td>
-                        <td>{{book.Version}}</td>
-                        <td>{{book.RentingPrice}}</td>
-                    </tr>
-                </tbody>
-            </table>
+        <div ng-show="isLoading" class="loader">loader...</div>
+        <div ng-hide="isLoading">
+            <div class="container">
+                <h2>USER INFO</h2>
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Phone</th>
+                            <th>Address</th>
+                            <th>City</th>
+                            <th>State</th>
+                            <th>ZipCode</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{user.FirstName}} {{user.LastName}}</td>
+                            <td>{{user.Phone}}</td>
+                            <td>{{user.Address}}</td>
+                            <td>{{user.City}}</td>
+                            <td>{{user.State}}</td>
+                            <td>{{user.ZipCode}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <h2>Books Currently for Sale</h2>
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>ISBN</th>
+                            <th>Genre</th>
+                            <th>Description</th>
+                            <th>Version</th>
+                            <th>Selling Price</th>
+                            <th>Renting Price</th>
+                        </tr>
+                    </thead>
+                    <tbody ng-if"showBooks" ng-repeat="b in user.BooksForSale">
+                        <tr>
+                            <td>{{b.Title}}</td>
+                            <td>{{b.ISBN}}</td>
+                            <td>{{b.Genre}}</td>
+                            <td>{{b.Description}}</td>
+                            <td>{{b.Version}}</td>
+                            <td>{{b.SellingPrice}}</td>
+                            <td>{{b.RentingPrice}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <h2>Rented Books</h2>
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>ISBN</th>
+                            <th>Genre</th>
+                            <th>Description</th>
+                            <th>Version</th>
+                            <th>Renting Price</th>
+                        </tr>
+                    </thead>
+                    <tbody ng-if"showBooks" ng-repeat="book in user.BookRentals">
+                        <tr>
+                            <td>{{book.Title}}</td>
+                            <td>{{book.ISBN}}</td>
+                            <td>{{book.Genre}}</td>
+                            <td>{{book.Description}}</td>
+                            <td>{{book.Version}}</td>
+                            <td>{{book.RentingPrice}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </div>

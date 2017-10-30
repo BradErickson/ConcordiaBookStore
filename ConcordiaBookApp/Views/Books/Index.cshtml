@@ -1,28 +1,30 @@
 ﻿<div class="row">
     <div ng-controller="BookIndexController">
         @Html.ActionLink("Create", "Create")
-        <div class="container">
-            <h2>Available Books</h2>
-            <!-- book search function, added the table that includes the option value, and the input query -->
-            <table>
-                <tr>
-                    <td align="right">Search By :</td>
-                    <td>
-                        <select ng-model="queryBy">
-                            <option value="$"></option>
-                            <option value="title">Title</option>
-                            <option value="isbn">ISBN</option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td align="right">Search :</td>
-                    <td><input ng-model="query[queryBy]" /></td>
-                </tr>
-            </table>
+        <div ng-show="isLoading" class="loader">loader...</div>
+        <div ng-hide="isLoading">
+            <div class="container">
+                <h2>Available Books</h2>
+                <!-- book search function, added the table that includes the option value, and the input query -->
+                <table>
+                    <tr>
+                        <td align="right">Search By :</td>
+                        <td>
+                            <select ng-model="queryBy">
+                                <option value="$"></option>
+                                <option value="title">Title</option>
+                                <option value="isbn">ISBN</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="right">Search :</td>
+                        <td><input ng-model="query[queryBy]" /></td>
+                    </tr>
+                </table>
 
-            <table class="table table-hover">
-                <thead>
+                <table class="table table-hover">
+                    <thead>
                         <tr>
                             <th>Cover Photo</th>
                             <th>Title</th>
@@ -33,23 +35,24 @@
                             <th>Sale Price</th>
                             <th>Rent Price</th>
                         </tr>
-                </thead>
-                <!-- book search function, added the '| filter:query' -->
-                <tbody>
-                    <tr ng-repeat="book in books | filter:query">
-                        <td><img class="cover-photo" src="{{book.photoUrl}}"/></td>
-                        <td>{{book.title}}</td>
-                        <td ng-repeat="author in book.authors">{{author.name}}</td>
-                        <td>{{book.isbn}}</td>
-                        <td>{{book.genre}}</td>
-                        <td>{{book.quantity}}</td>
-                        <td>{{book.sellingPrice}}</td>
-                        <td>{{book.rentingPrice}}</td>
-                        <td><button class="btn btn-primary" ng-click="rentBook(book.id)">Rent</button></td>
-                        <td><button class="btn btn-danger" ng-click="delete(book.id)">Remove</button></td>
-                    </tr>
-                </tbody>
-            </table>
+                    </thead>
+                    <!-- book search function, added the '| filter:query' -->
+                    <tbody>
+                        <tr ng-repeat="book in books | filter:query">
+                            <td><img class="cover-photo" src="{{book.photoUrl}}" /></td>
+                            <td>{{book.title}}</td>
+                            <td ng-repeat="author in book.authors">{{author.name}}</td>
+                            <td>{{book.isbn}}</td>
+                            <td>{{book.genre}}</td>
+                            <td>{{book.quantity}}</td>
+                            <td>{{book.sellingPrice}}</td>
+                            <td>{{book.rentingPrice}}</td>
+                            <td><button class="btn btn-primary" ng-click="rentBook(book.id)">Rent</button></td>
+                            <td><button class="btn btn-danger" ng-click="delete(book.id)">Remove</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            </div>
         </div>
-    </div>
 </div>
