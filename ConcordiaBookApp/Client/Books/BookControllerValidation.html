@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+	<h2>Create Book Form Validation</h2>
+
+	<form ng-app="myApp" ng-controller="validateCtrl"
+		  name="myForm" novalidate>
+
+		<p>
+			Title:
+			<br>
+			<input type="text" name="title" ng-model="Intoduction to Biology" required>
+			<span style="color:red" ng-show="myForm.title.$dirty && myForm.title.$invalid">
+				<span ng-show="myForm.title.$error.required">Title is required</span>
+			</span>
+		</p>
+
+		<p>
+			Description:
+			<br>
+			<input type="text" name="description" ng-model="Textbook used for BIO-120" required>
+			<span style="color:red" ng-show="myForm.desription.$dirty && myForm.description.$invalid">
+				<span ng-show="myForm.description.$error.required">Description is required</span>
+			</span>
+		</p>
+
+		<p>
+			Version:
+			<br>
+			<input type="text" name="Version" ng-model="A" required>
+			<span style="color:red" ng-show="myForm.version.$dirty && myForm.version.$invalid">
+				<span ng-show="myForm.version.$error.required">Version is required</span>
+			</span>
+		</p>
+
+		<p>
+			ISBN:
+			<br>
+			<input type="text" name="ISBN" ng-model="978-3-16-148410-0" required>
+			<span style="color:red" ng-show="myForm.ISBN.$dirty && myForm.ISBN.$invalid">
+				<span ng-show="myForm.ISBN.$error.required">ISBN is required</span>
+			</span>
+		</p>
+
+		<p>
+			Genre:
+			<br>
+			<input type="text" name="Genre" ng-model="Biology" required>
+			<span style="color:red" ng-show="myForm.genre.$dirty && myForm.genre.$invalid">
+				<span ng-show="myForm.genre.$error.required">Genre is required</span>
+			</span>
+		</p>
+
+		<p>
+			Sale Price:
+			<br>
+			<input type="text" name="salePrice" ng-model="$100.00" required>
+			<span style="color:red" ng-show="myForm.salePrice.$dirty && myForm.salePrice.$invalid">
+				<span ng-show="myForm.salePrice.$error.required">Sale Price is required</span>
+			</span>
+		</p>
+
+		<p>
+			Rental Price:
+			<br>
+			<input type="text" name="rentalPrice" ng-model="$50.00" required>
+			<span style="color:red" ng-show="myForm.rentalPrice.$dirty && myForm.rentalPrice.$invalid">
+				<span ng-show="myForm.rentalPrice.$error.required">Rental Price is required</span>
+			</span>
+		</p>
+
+		<p>
+			Available for Trade:
+			<br>
+			<input type="radio" name="trade" ng-model="Yes" required>
+			<span style="color:red" ng-show="myForm.trade.$dirty && myForm.trade.$invalid">
+				<span ng-show="myForm.trade.$error.required">Trade is required</span>
+			</span>
+		</p>
+
+		<p>
+			<input type="submit"
+				   ng-disabled="myForm.title.$dirty && myForm.title.$invalid || myForm.description.$dirty && myForm.description.$invalid || myForm.version.$dirty && myForm.version.$invalid || myForm.ISBN.$dirty && myForm.ISBN.$invalid || myForm.genre.$dirty && myForm.genre.$invalid || myForm.salePrice.$dirty && myForm.salePrice.$invalid || myForm.rentalPrice.$dirty && myForm.rentalPrice.$invalid || myForm.trade.$dirty && myForm.trade.$invalid">
+		</p>
+
+	</form>
+	<script>
+            var app = angular.module('myApp', []);
+        app.controller('validateCtrl', function ($scope) {
+            $scope.title = 'Introduction to Biology';
+            $scope.description = 'Textbook used for BIO-120';
+            $scope.version = 'A';
+            $scope.ISBN = '978-3-16-148410-0';
+            $scope.genre = 'Biology';
+            $scope.salePrice = '$100.00';
+            $scope.rentalPrice = '$50.00';
+			$scope.trade = 'Yes';
+        });
+	</script>
+
+</body>
+</html>
