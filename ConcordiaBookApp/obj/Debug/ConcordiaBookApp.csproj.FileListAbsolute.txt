@@ -270,7 +270,6 @@ C:\Users\Brittany Wimmer\Documents\Visual Studio 2017\Projects\ConcordiaBookStor
 C:\Users\Brittany Wimmer\Documents\Visual Studio 2017\Projects\ConcordiaBookStore\ConcordiaBookApp\bin\Microsoft.Owin.Security.Google.xml
 C:\Users\Brittany Wimmer\Documents\Visual Studio 2017\Projects\ConcordiaBookStore\ConcordiaBookApp\bin\Microsoft.Owin.Security.Twitter.xml
 C:\Users\Brittany Wimmer\Documents\Visual Studio 2017\Projects\ConcordiaBookStore\ConcordiaBookApp\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-C:\Users\Brittany Wimmer\Documents\Visual Studio 2017\Projects\ConcordiaBookStore\ConcordiaBookApp\obj\Debug\ConcordiaBookApp.csprojResolveAssemblyReference.cache
 C:\Users\Brittany Wimmer\Documents\Visual Studio 2017\Projects\ConcordiaBookStore\ConcordiaBookApp\obj\Debug\ConcordiaBookApp.Migrations.intial.resources
 C:\Users\Brittany Wimmer\Documents\Visual Studio 2017\Projects\ConcordiaBookStore\ConcordiaBookApp\obj\Debug\ConcordiaBookApp.Migrations.bookinbookrental.resources
 C:\Users\Brittany Wimmer\Documents\Visual Studio 2017\Projects\ConcordiaBookStore\ConcordiaBookApp\obj\Debug\ConcordiaBookApp.Migrations.bookinbookrental2.resources
@@ -376,3 +375,4 @@ C:\Users\Brian\Documents\GitHub\ConcordiaBookStore\ConcordiaBookApp\obj\Debug\Co
 C:\Users\Brian\Documents\GitHub\ConcordiaBookStore\ConcordiaBookApp\obj\Debug\ConcordiaBookApp.csproj.CoreCompileInputs.cache
 C:\Users\Brian\Documents\GitHub\ConcordiaBookStore\ConcordiaBookApp\obj\Debug\ConcordiaBookApp.dll
 C:\Users\Brian\Documents\GitHub\ConcordiaBookStore\ConcordiaBookApp\obj\Debug\ConcordiaBookApp.pdb
+C:\Users\Brittany Wimmer\Documents\Visual Studio 2017\Projects\ConcordiaBookStore\ConcordiaBookApp\obj\Debug\ConcordiaBookApp.csprojResolveAssemblyReference.cache
