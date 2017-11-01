@@ -22,7 +22,7 @@ namespace ConcordiaBookApp.Controllers
         }
 
         [System.Web.Http.HttpPost]
-        [System.Web.Http.Route("Books/SendMessage/{id}")]
+        [System.Web.Http.Route("Messages/ReplyMessage/{id}")]
         public string ReplyToMessage(int id, [FromBody]MessageDto message)
         {
             try
