@@ -254,6 +254,7 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\MessageDto.cs" />
     <Compile Include="Models\Messages.cs" />
+    <Compile Include="Models\MessageThread.cs" />
     <Compile Include="Models\PostBook.cs" />
     <Compile Include="Models\UserProfile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

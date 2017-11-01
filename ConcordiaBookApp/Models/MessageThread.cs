@@ -1,0 +1,13 @@
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+
+namespace ConcordiaBookApp.Models
+{
+    public class MessageThread
+    {
+        [Key]
+        public int MessageThreadId { get; set; }
+        public string Title { get; set; }
+        public string MessageBody { get; set; }
+    }
+}

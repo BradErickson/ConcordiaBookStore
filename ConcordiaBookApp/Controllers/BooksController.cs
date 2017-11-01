@@ -163,20 +163,27 @@ namespace ConcordiaBookApp.Controllers
         [System.Web.Http.Route("Books/SendMessage/{id}")]
         public string SendMessage(int id, [FromBody]MessageDto messages)
         {
-            var currentUserId = User.Identity.GetUserId();
-            var up = db.UserProfiles.FirstOrDefault(x => x.UserId == currentUserId);
-            var test = db.BooksInStore.FirstOrDefault(y => y.Book.BookId == id);
-            var bookOwner = db.UserProfiles.Find(test.user.UserId);
+            try
+            {
+                var currentUserId = User.Identity.GetUserId();
+                var up = db.UserProfiles.FirstOrDefault(x => x.UserId == currentUserId);
+                var test = db.BooksInStore.FirstOrDefault(y => y.Book.BookId == id);
+                var bookOwner = db.UserProfiles.Find(test.user.UserId);
+                var messageThread = new MessageThread();
+                messageThread.Title = messages.Title;
+                messageThread.MessageBody = messages.MessageBody;
 
+                var message = new Messages();
+                
+                message.FromId = up.UserId;
 
-            var message = new Messages();
-            message.Title = messages.Title;
-            message.MessageBody = messages.MessageBody;
-            message.FromId = up.UserId;
-
-            bookOwner.Messages.Add(message);
-            db.SaveChanges();
-
+                bookOwner.Messages.Add(message);
+                db.SaveChanges();
+            } 
+            catch(Exception err)
+            {
+                return err.Message;
+            }
             return "success";
 
         }
