@@ -40,6 +40,11 @@ function BookService ($http) {
         });
     }
 
+
+    BookService.getMessagePage = function (bookId) {
+        window.location = "/messages/create?bookId=" + bookId;
+    }
+
     BookService.rentBook = function (bookId) {
         return $http({
             method: 'DELETE',

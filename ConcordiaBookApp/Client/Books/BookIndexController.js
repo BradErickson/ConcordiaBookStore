@@ -31,4 +31,8 @@ function BookIndexController($scope, BookService) {
         })
     }
 
+    $scope.sendMessage = function (bookId) {
+        BookService.getMessagePage(bookId).then(function () {
+        })
+    }
 }
