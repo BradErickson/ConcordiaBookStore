@@ -7,6 +7,8 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using ConcordiaBookApp.Models;
+using System.Web.Http;
+using Microsoft.AspNet.Identity;
 
 namespace ConcordiaBookApp.Controllers
 {
@@ -14,99 +16,37 @@ namespace ConcordiaBookApp.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: Messages
-        public ActionResult Index()
-        {
-            return View(db.Messages.ToList());
-        }
-
-        // GET: Messages/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Messages messages = db.Messages.Find(id);
-            if (messages == null)
-            {
-                return HttpNotFound();
-            }
-            return View(messages);
-        }
-
-
         public ActionResult Create(int? ID)
         {
             return View();
         }
 
-
-        // POST: Messages/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "MessageID,Message")] Messages messages)
+        [System.Web.Http.HttpPost]
+        [System.Web.Http.Route("Books/SendMessage/{id}")]
+        public string ReplyToMessage(int id, [FromBody]MessageDto message)
         {
-            if (ModelState.IsValid)
+            try
             {
-                db.Messages.Add(messages);
+                var currentUserId = User.Identity.GetUserId();
+                var getMessageThread = db.Messages.Find(id);
+
+                var newMessage = new MessageThread();
+                newMessage.Title = message.Title;
+                newMessage.MessageBody = message.MessageBody;
+                newMessage.SenderId = currentUserId;
+
+                getMessageThread.MessagesInThread.Add(newMessage);
                 db.SaveChanges();
-                return RedirectToAction("Index");
             }
+            catch (Exception err)
+            {
+                return err.Message;
+            }
+            return "success";
 
-            return View(messages);
         }
-
-        // GET: Messages/Edit/5
-        public ActionResult Edit(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Messages messages = db.Messages.Find(id);
-            if (messages == null)
-            {
-                return HttpNotFound();
-            }
-            return View(messages);
-        }
-
-        // POST: Messages/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "MessageID,Message")] Messages messages)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(messages).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            return View(messages);
-        }
-
-        // GET: Messages/Delete/5
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Messages messages = db.Messages.Find(id);
-            if (messages == null)
-            {
-                return HttpNotFound();
-            }
-            return View(messages);
-        }
-
         // POST: Messages/Delete/5
-        [HttpPost, ActionName("Delete")]
+        [System.Web.Http.HttpPost, System.Web.Http.ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {

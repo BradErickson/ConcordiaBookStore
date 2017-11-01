@@ -172,7 +172,7 @@ namespace ConcordiaBookApp.Controllers
                 var messageThread = new MessageThread();
                 messageThread.Title = messages.Title;
                 messageThread.MessageBody = messages.MessageBody;
-
+                messageThread.SenderId = up.UserId;
                 var message = new Messages();
                 
                 message.FromId = up.UserId;

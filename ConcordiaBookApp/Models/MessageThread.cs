@@ -9,5 +9,6 @@ namespace ConcordiaBookApp.Models
         public int MessageThreadId { get; set; }
         public string Title { get; set; }
         public string MessageBody { get; set; }
+        public string SenderId { get; set; }
     }
 }
