@@ -171,10 +171,10 @@ namespace ConcordiaBookApp.Controllers
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email, UserProfile = profile};
                 try
             {
-                if(!user.Email.Contains("@csp.edu"))
-                {
-                    throw new Exception("User must register with a Concordia email as username");
-                }
+                //if(!user.Email.Contains("@csp.edu"))
+                //{
+                //    throw new Exception("User must register with a Concordia email as username");
+                //}
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {

@@ -176,7 +176,7 @@ namespace ConcordiaBookApp.Controllers
                 var message = new Messages();
                 
                 message.FromId = up.UserId;
-
+                message.MessagesInThread.Add(messageThread);
                 bookOwner.Messages.Add(message);
                 db.SaveChanges();
             } 

@@ -20,6 +20,28 @@ namespace ConcordiaBookApp.Controllers
         {
             return View();
         }
+        public ActionResult MyMessages()
+        {
+            return View();
+        }
+
+        [System.Web.Http.HttpGet]
+        [System.Web.Http.Route("Messages/GetMyMessages")]
+        public JsonResult GetMyMessages()
+        {
+            try
+            {
+                var currentUserId = User.Identity.GetUserId();
+                var currentUProfile = db.UserProfiles.Find(currentUserId);
+                var messages = currentUProfile.Messages;
+                return Json(messages);
+            }
+            catch (Exception err)
+            {
+                return Json(err.Message);
+            }
+
+        }
 
         [System.Web.Http.HttpPost]
         [System.Web.Http.Route("Messages/ReplyMessage/{id}")]
