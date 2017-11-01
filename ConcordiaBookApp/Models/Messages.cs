@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace ConcordiaBookApp.Models
 {
@@ -6,8 +7,8 @@ namespace ConcordiaBookApp.Models
     {
         [Key]
         public int MessageID { get; set; }
-        public string Title { get; set; }
-        public string MessageBody { get; set; }
+
+        public ICollection<MessageThread> MessagesInThread { get; set; }
         public string FromId { get; set; }
         public UserProfile User { get; set; }
     }
