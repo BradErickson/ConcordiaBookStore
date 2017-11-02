@@ -3,23 +3,13 @@
 
 function MessageService($http) {
     var MessageService = {};
-    MessageService.postMessage = function (PostMessage, bookId) {
-        return $http({
-            method: 'POST',
-            url: '/Books/SendMessage/' + bookId,
-            data: PostMessage,
-            headers: {
-                "Content-Type": "application/json"
-            }
-        }).then(function successCallback(response) {
-            console.log("response", response);
-        }, function errorCallback(response) {
-            console.log("response", response);
-        });
-    }
 
     MessageService.getMyMessagePage = function () {
         window.location = "/messages/GetMyMessages";
+    }
+    MessageService.replyMessagePage = function (messageId) {
+        debugger;
+        window.location = "/messages/create?messageId=" + messageId + "&isReply=true";
     }
 
     MessageService.getMyMessages = function () {
@@ -35,11 +25,24 @@ function MessageService($http) {
             console.log("response", response);
         });
     }
-
+    MessageService.postMessage = function (PostMessage, bookId) {
+        return $http({
+            method: 'POST',
+            url: '/Books/SendMessage/' + bookId,
+            data: PostMessage,
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).then(function successCallback(response) {
+            console.log("response", response);
+        }, function errorCallback(response) {
+            console.log("response", response);
+        });
+    }
     MessageService.replyMessage = function (PostMessage, messageId) {
         return $http({
             method: 'POST',
-            url: '/Messages/ReplyMessage/' + messageId,
+            url: '/Messages/ReplyToMessage/' + parseInt(messageId),
             data: PostMessage,
             headers: {
                 "Content-Type": "application/json"

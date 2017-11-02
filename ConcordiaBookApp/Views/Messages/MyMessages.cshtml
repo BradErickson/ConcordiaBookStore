@@ -4,20 +4,17 @@
         <div ng-hide="isLoading">
             <h1>My Messages</h1>
             <div ng-repeat="message in myMessages">
-                <h5>Subject line</h5>
-                <div>{{message.SubjectLine}}</div>
-                <h5>Message Body</h5>
-                <div>{{message.MessageBody}}</div>
-                <h5>From</h5>
-                <div>{{message.FromName}}</div>
-                <button class="btn btn-primary">Reply</button>
+                <h5 style="margin-bottom: 0px;">Subject</h5>
+                <div class="well-sm" style="background-color: lightgray; margin-top: 0px; margin-bottom: 5px;">{{message.SubjectLine}}</div>
+                <h5 style="margin-bottom: 0px;">Message</h5>
+                <div class="well-lg" style="background-color: lightgray; margin-bottom: 15px; margin-top: 0px;">
+                    {{message.MessageBody}}
+                </div>
+                <h5>From: {{message.FromName}}</h5>
+                <button class="btn btn-primary" ng-click="reply(message.MessageThreadID)">Reply</button>
                 <hr />
             </div>
-            @*<form novalidate class="simple-form">
-                <label for="title">Subject: <input type="text" id="title" class="oneColumn" ng-model="Message.Title" /></label><br />
-                <label for="messageBody" title="If more then one name is on the book, type in the first name that appears">Message: <input type="text" id="messageBody" class="oneColumn" ng-model="Message.MessageBody" /></label><br />
-                <input type="submit" ng-click="reply(Message)" value="Send" />
-            </form>*@
+
         </div>
     </div>
 </div>

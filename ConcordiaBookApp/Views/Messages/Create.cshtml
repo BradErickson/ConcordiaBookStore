@@ -5,7 +5,8 @@
             <form novalidate class="simple-form">
                 <label for="title">Title: <input type="text" id="title" class="oneColumn" ng-model="Message.Title" /></label><br />
                 <label for="authorName" title="If more then one name is on the book, type in the first name that appears">Message: <input type="text" id="authorName" class="oneColumn" ng-model="Message.MessageBody" /></label><br />
-                <input type="submit" ng-click="update(Message)" value="Send" />
+                <input type="submit" ng-show="isReply" ng-click="reply(Message)" value="Reply" />
+                <input type="submit" ng-show="!isReply" ng-click="update(Message)" value="Send" />
             </form>
         </div>
     </div>

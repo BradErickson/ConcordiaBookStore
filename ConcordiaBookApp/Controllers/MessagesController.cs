@@ -39,7 +39,7 @@ namespace ConcordiaBookApp.Controllers
                     var messageThread = db.MessagesInThread.FirstOrDefault(y => y.MessageId == m.MessageID);
                     var fromUser = db.UserProfiles.FirstOrDefault(z => z.UserId == m.FromId);
                     var messages = new GetMessageDTO();
-                    messages.MessageThreadID = messageThread.MessageThreadId;
+                    messages.MessageThreadID = m.MessageID;
                     messages.FromName = fromUser.FirstName + " " + fromUser.LastName;
                     messages.SubjectLine = messageThread.Title;
                     messages.MessageBody = messageThread.MessageBody;
@@ -57,20 +57,20 @@ namespace ConcordiaBookApp.Controllers
         }
 
         [System.Web.Http.HttpPost]
-        [System.Web.Http.Route("Messages/ReplyMessage/{id}")]
+        [System.Web.Http.Route("Messages/ReplyToMessage/{id}")]
         public string ReplyToMessage(int id, [FromBody]MessageDto message)
         {
             try
             {
                 var currentUserId = User.Identity.GetUserId();
-                var getMessageThread = db.Messages.Find(id);
+                var getMessageThread = db.MessagesInThread.Where(x => x.MessageId == id).ToList();
 
                 var newMessage = new MessageThread();
                 newMessage.Title = message.Title;
                 newMessage.MessageBody = message.MessageBody;
                 newMessage.SenderId = currentUserId;
 
-                getMessageThread.MessagesInThread.Add(newMessage);
+                getMessageThread.Add(newMessage);
                 db.SaveChanges();
             }
             catch (Exception err)
