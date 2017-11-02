@@ -32,9 +32,22 @@ namespace ConcordiaBookApp.Controllers
             try
             {
                 var currentUserId = User.Identity.GetUserId();
-                var currentUProfile = db.UserProfiles.Find(currentUserId);
-                var messages = currentUProfile.Messages;
-                return Json(messages);
+                var message = db.Messages.Where(x => x.User.UserId == currentUserId).ToList();
+                var messageReturnList = new List<GetMessageDTO>();
+                foreach(var m in message)
+                {
+                    var messageThread = db.MessagesInThread.FirstOrDefault(y => y.MessageId == m.MessageID);
+                    var fromUser = db.UserProfiles.FirstOrDefault(z => z.UserId == m.FromId);
+                    var messages = new GetMessageDTO();
+                    messages.MessageThreadID = messageThread.MessageThreadId;
+                    messages.FromName = fromUser.FirstName + " " + fromUser.LastName;
+                    messages.SubjectLine = messageThread.Title;
+                    messages.MessageBody = messageThread.MessageBody;
+                    messageReturnList.Add(messages);
+                }
+                
+               
+                 return Json(messageReturnList, JsonRequestBehavior.AllowGet);
             }
             catch (Exception err)
             {

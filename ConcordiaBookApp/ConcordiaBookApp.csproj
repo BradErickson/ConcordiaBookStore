@@ -250,6 +250,7 @@
     <Compile Include="Models\BooksInStore.cs" />
     <Compile Include="Models\BooksSold.cs" />
     <Compile Include="Models\CreateUserViewModel.cs" />
+    <Compile Include="Models\GetMessageDTO.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\MessageDto.cs" />

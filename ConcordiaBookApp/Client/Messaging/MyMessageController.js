@@ -18,6 +18,7 @@ function MyMessageController($scope, MessageService) {
 
     function getMyMessages() {
         MessageService.getMyMessages().then(function (data) {
+            debugger;
             $scope.myMessages = data;
         })
     }

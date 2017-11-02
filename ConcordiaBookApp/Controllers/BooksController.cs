@@ -169,15 +169,20 @@ namespace ConcordiaBookApp.Controllers
                 var up = db.UserProfiles.FirstOrDefault(x => x.UserId == currentUserId);
                 var test = db.BooksInStore.FirstOrDefault(y => y.Book.BookId == id);
                 var bookOwner = db.UserProfiles.Find(test.user.UserId);
+
+                var messageThreadList = new List<MessageThread>();
                 var messageThread = new MessageThread();
                 messageThread.Title = messages.Title;
                 messageThread.MessageBody = messages.MessageBody;
                 messageThread.SenderId = up.UserId;
-                var message = new Messages();
-                
+                messageThreadList.Add(messageThread);
+
+                var message = new Messages();                
                 message.FromId = up.UserId;
-                message.MessagesInThread.Add(messageThread);
+                message.MessagesInThread = messageThreadList;
+                message.User = bookOwner;
                 bookOwner.Messages.Add(message);
+
                 db.SaveChanges();
             } 
             catch(Exception err)
