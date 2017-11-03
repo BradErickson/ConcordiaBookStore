@@ -32,22 +32,30 @@ namespace ConcordiaBookApp.Controllers
             try
             {
                 var currentUserId = User.Identity.GetUserId();
-                var message = db.Messages.Where(x => x.User.UserId == currentUserId).ToList();
-                var messageReturnList = new List<GetMessageDTO>();
-                foreach(var m in message)
-                {
-                    var messageThread = db.MessagesInThread.FirstOrDefault(y => y.MessageId == m.MessageID);
-                    var fromUser = db.UserProfiles.FirstOrDefault(z => z.UserId == m.FromId);
-                    var messages = new GetMessageDTO();
-                    messages.MessageThreadID = m.MessageID;
-                    messages.FromName = fromUser.FirstName + " " + fromUser.LastName;
-                    messages.SubjectLine = messageThread.Title;
-                    messages.MessageBody = messageThread.MessageBody;
-                    messageReturnList.Add(messages);
-                }
+                var getMessageThreads = db.Messages.Where(x => x.User.UserId == currentUserId || x.FromId == currentUserId).ToList();
                 
+                var messageDTO = new List<GetMessageDTO>();
+                foreach (var i in getMessageThreads)
+                {
+                    var getMessagesInThread = db.MessagesInThread.Where(x => x.MessageId == i.MessageID).ToList();
+                    var mess = new GetMessageDTO();
+                    mess.MessageThreadID = i.MessageID;
+                    mess.Message = new List<MessageThread>();
+                    foreach(var j in getMessagesInThread)
+                    {
+                        var newMessage = new MessageThread();
+                        
+                        var user = db.UserProfiles.FirstOrDefault(z => z.UserId == j.SenderId);
+                        newMessage.MessageBody = j.MessageBody;
+                        newMessage.Title = j.Title;
+                        newMessage.SenderId = j.SenderId;
+                        newMessage.SenderName = user.FirstName + " " + user.LastName;
+                        mess.Message.Add(newMessage);
+                    }
+                    messageDTO.Add(mess);
+                }
                
-                 return Json(messageReturnList, JsonRequestBehavior.AllowGet);
+                 return Json(messageDTO, JsonRequestBehavior.AllowGet);
             }
             catch (Exception err)
             {
@@ -63,14 +71,15 @@ namespace ConcordiaBookApp.Controllers
             try
             {
                 var currentUserId = User.Identity.GetUserId();
-                var getMessageThread = db.MessagesInThread.Where(x => x.MessageId == id).ToList();
+                var getMessageThread = db.MessagesInThread.FirstOrDefault(x => x.MessageId == id);
 
                 var newMessage = new MessageThread();
                 newMessage.Title = message.Title;
                 newMessage.MessageBody = message.MessageBody;
                 newMessage.SenderId = currentUserId;
-
-                getMessageThread.Add(newMessage);
+                newMessage.MessageId = getMessageThread.MessageId;
+                var messageT = db.Messages.FirstOrDefault(x => x.MessageID == getMessageThread.MessageId);
+                messageT.MessagesInThread.Add(newMessage);
                 db.SaveChanges();
             }
             catch (Exception err)

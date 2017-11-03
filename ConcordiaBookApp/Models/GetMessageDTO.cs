@@ -8,8 +8,7 @@ namespace ConcordiaBookApp.Models
     public class GetMessageDTO
     {
         public int MessageThreadID { get; set; }
-        public string FromName { get; set; }
-        public string SubjectLine { get; set;}
-        public string MessageBody { get; set; }
+        public List<MessageThread> Message { get; set;}
     }
+
 }
