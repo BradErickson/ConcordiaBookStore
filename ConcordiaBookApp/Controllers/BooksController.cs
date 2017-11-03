@@ -200,6 +200,8 @@ namespace ConcordiaBookApp.Controllers
         public HttpStatusCode DeleteBook(int id)
         {
             Book book = db.Books.Find(id);
+            BooksInStore books = db.BooksInStore.FirstOrDefault(x => x.Book.BookId == id);
+            db.BooksInStore.Remove(books);
             db.Books.Remove(book);
             db.SaveChanges();
             return HttpStatusCode.OK;
