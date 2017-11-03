@@ -41,7 +41,7 @@ namespace ConcordiaBookApp.Controllers
             });
             return Json(jsonBook, JsonRequestBehavior.AllowGet);
         }
-
+        [System.Web.Mvc.Authorize]
         public ActionResult Index()
         {
             return View();

@@ -10,6 +10,7 @@ function CurrentUserController($scope, UserService) {
             $scope.isLoading = false;
             $scope.user = data;
             $scope.showBooks = data.BooksForSale.length;
+            sessionStorage.setItem("loggedIn", "true");
         });
     }
 }

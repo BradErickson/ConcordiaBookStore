@@ -271,6 +271,7 @@
     <Content Include="Client\Messaging\MessageController.js" />
     <Content Include="Client\Messaging\MessageService.js" />
     <Content Include="Client\Messaging\MyMessageController.js" />
+    <Content Include="Client\Nav\NavController.js" />
     <Content Include="Client\Users\CreateNewUserController.js" />
     <Content Include="Client\Users\CurrentUserProfile.js" />
     <Content Include="Client\Users\UserService.js" />

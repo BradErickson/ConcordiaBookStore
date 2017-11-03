@@ -60,6 +60,10 @@ namespace ConcordiaBookApp.Controllers
             try
             {
                 var currentUserId = User.Identity.GetUserId();
+                if(currentUserId == null)
+                {
+                    throw new Exception("No User Logged in");
+                }
                 var result = db.UserProfiles.FirstOrDefault(x => x.UserId == currentUserId);
                 var currentUserProfile = new GetUser
                 {
