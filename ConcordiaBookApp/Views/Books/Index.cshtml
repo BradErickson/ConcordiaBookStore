@@ -29,12 +29,13 @@
                             <img class="cover-photo" src="{{book.photoUrl}}" />
                             <div>Title: {{book.title}}</div>
                             <div>Isbn: {{book.isbn}}</div>
-                            <div>Genre: {{book.genre}}</div>
+                            <!--<div>Genre: {{book.genre}}</div> -->
                             <div>Quantity: {{book.quantity}}</div>
-                            <div>Sell Price{{book.sellingPrice}}</div>
-                            <button class="btn btn-primary" ng-click="rentBook(book.id)">Rent</button>
+                            <div>Sell Price: {{book.sellingPrice}}</div>
+                            <div>Rent Price: {{book.rentingPrice}}</div>
+                            <!--<button class="btn btn-primary" ng-click="rentBook(book.id)">Rent</button> -->
                             <button class="btn btn-primary" ng-click="sendMessage(book.id)">Send Message</button>
-                            <button class="btn btn-danger" ng-click="delete(book.id)">Remove</button>
+                            <!--<button class="btn btn-danger" ng-click="delete(book.id)">Remove</button> -->
                         </div>
                         </div>
                     </div>

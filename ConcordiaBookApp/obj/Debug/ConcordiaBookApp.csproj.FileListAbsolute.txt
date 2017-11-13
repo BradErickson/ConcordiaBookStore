@@ -377,3 +377,4 @@ C:\Users\Brian\Documents\GitHub\ConcordiaBookStore\ConcordiaBookApp\obj\Debug\Co
 C:\Users\Brian\Documents\GitHub\ConcordiaBookStore\ConcordiaBookApp\obj\Debug\ConcordiaBookApp.csproj.CoreCompileInputs.cache
 C:\Users\Brian\Documents\GitHub\ConcordiaBookStore\ConcordiaBookApp\obj\Debug\ConcordiaBookApp.dll
 C:\Users\Brian\Documents\GitHub\ConcordiaBookStore\ConcordiaBookApp\obj\Debug\ConcordiaBookApp.pdb
+C:\Users\Brian\Documents\GitHub\ConcordiaBookStore\ConcordiaBookApp\obj\Debug\ConcordiaBookApp.csprojResolveAssemblyReference.cache
