@@ -1,5 +1,5 @@
 ﻿angular.module('bookApp')
-.controller("CreateBookController", CreateBookController)
+    .controller("CreateBookController", CreateBookController)
 
 function CreateBookController($scope, BookService) {
     $scope.PostBook = {};

@@ -21,7 +21,7 @@ function BookIndexController($scope, BookService) {
         BookService.deleteBooks(bookId).then(function (data) {
             console.log("Data: ", data);
             getBooks();
-        })
+               })
     }
 
     $scope.rentBook = function (bookId) {
