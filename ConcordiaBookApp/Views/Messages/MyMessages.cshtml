@@ -1,0 +1,26 @@
+﻿<div class="row">
+    <div ng-controller="MyMessageController">
+        <div ng-show="isLoading" class="loader">loader...</div>
+        <div ng-hide="isLoading">
+            <h1 style="text-align:center;">My Messages</h1>
+            <div ng-repeat="messageThread in myMessages">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div style="background-color:lightblue" class="col-md-8 col-md-offset-2">
+                            <h3 style="padding-top:10px; margin-bottom:15px;">Message Thread</h3>
+                            <div ng-repeat="message in messageThread.Message">
+                                <h5>Subject: {{message.Title}}</h5>
+                                <p style="margin-bottom:0px;">Message: {{message.MessageBody}}</p>
+                                <p style="padding-top:0px; margin-bottom: 15px;">From: {{message.SenderName}}</p>
+                                <hr style="margin-top:5px; margin-bottom:5px;" />
+                            </div>
+                            <button class="btn btn-primary" style="margin-bottom: 15px; margin-top:10px;" ng-click="reply(messageThread.MessageThreadID)">Reply</button>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        </div>
+    </div>
+

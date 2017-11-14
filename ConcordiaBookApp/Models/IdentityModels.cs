@@ -33,6 +33,8 @@ namespace ConcordiaBookApp.Models
         public DbSet<BookRental> BookRentals { get; set; }
         public DbSet<BooksInStore> BooksInStore { get; set; }
         public DbSet<BooksSold> BooksSold { get; set; }
+        public DbSet<Messages> Messages { get; set; }
+        public DbSet<MessageThread> MessagesInThread { get; set; }
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();

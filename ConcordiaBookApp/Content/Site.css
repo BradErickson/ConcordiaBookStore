@@ -9,6 +9,12 @@
 */
 
 /* Basic */
+.box {
+    margin-bottom: 20px;
+    padding: 30px 15px;
+    background: #fff;
+    background: rgba(255,255,255,0.9);
+}
 
 .loader {
   margin: 100px auto;
@@ -1162,3 +1168,7 @@ input[type="button"],
     #footer .icons a {
         color: #bbb;
     }
+
+.redFont {
+    color: red;
+}

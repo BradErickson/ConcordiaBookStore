@@ -70,36 +70,48 @@ namespace ConcordiaBookApp.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
         {
-            if (!ModelState.IsValid)
+            try
             {
-                return View(model);
-            }
 
-            var user = await UserManager.FindByNameAsync(model.Email);
-            if (user != null)
-            {
-                if (!await UserManager.IsEmailConfirmedAsync(user.Id))
+
+                if (!ModelState.IsValid)
                 {
-                    ViewBag.errorMessage = "You must have a confirmed email to log on.";
-                    return View("Error");
-                }
-            }
-
-            // This doesn't count login failures towards account lockout
-            // To enable password failures to trigger account lockout, change to shouldLockout: true
-            var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
-            switch (result)
-            {
-                case SignInStatus.Success:
-                    return RedirectToLocal(returnUrl);
-                case SignInStatus.LockedOut:
-                    return View("Lockout");
-                case SignInStatus.RequiresVerification:
-                    return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
-                case SignInStatus.Failure:
-                default:
-                    ModelState.AddModelError("", "Invalid login attempt.");
                     return View(model);
+                }
+
+                var user = await UserManager.FindByNameAsync(model.Email);
+                if (user != null)
+                {
+                    if (!await UserManager.IsEmailConfirmedAsync(user.Id))
+                    {
+                        ViewBag.errorMessage = "You must have a confirmed email to log on.";
+                        return View("Error");
+                    }
+                }
+
+                // This doesn't count login failures towards account lockout
+                // To enable password failures to trigger account lockout, change to shouldLockout: true
+                var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
+                switch (result)
+                {
+                    case SignInStatus.Success:
+                        return RedirectToLocal(returnUrl);
+                    case SignInStatus.LockedOut:
+                        return View("Lockout");
+                    case SignInStatus.RequiresVerification:
+                        return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
+                    case SignInStatus.Failure:
+                    default:
+                        ModelState.AddModelError("", "Invalid login attempt.");
+                        return View(model);
+                }
+            } catch (Exception err)
+            {
+                throw err;
+            }
+            finally
+            {
+                Redirect("/User/UserProfile");
             }
         }
 
@@ -171,10 +183,10 @@ namespace ConcordiaBookApp.Controllers
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email, UserProfile = profile};
                 try
             {
-                if(!user.Email.Contains("@csp.edu"))
-                {
-                    throw new Exception("User must register with a Concordia email as username");
-                }
+                //if(!user.Email.Contains("@csp.edu"))
+                //{
+                //    throw new Exception("User must register with a Concordia email as username");
+                //}
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {

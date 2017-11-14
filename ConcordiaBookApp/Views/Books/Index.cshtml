@@ -22,36 +22,24 @@
                         <td><input ng-model="query[queryBy]" /></td>
                     </tr>
                 </table>
-
-                <table class="table table-hover">
-                    <thead>
-                        <tr>
-                            <th>Cover Photo</th>
-                            <th>Title</th>
-                            <th>Author</th>
-                            <th>ISBN</th>
-                            <th>Genre</th>
-                            <th>Quantity in Stock</th>
-                            <th>Sale Price</th>
-                            <th>Rent Price</th>
-                        </tr>
-                    </thead>
-                    <!-- book search function, added the '| filter:query' -->
-                    <tbody>
-                        <tr ng-repeat="book in books | filter:query">
-                            <td><img class="cover-photo" src="{{book.photoUrl}}" /></td>
-                            <td>{{book.title}}</td>
-                            <td ng-repeat="author in book.authors">{{author.name}}</td>
-                            <td>{{book.isbn}}</td>
-                            <td>{{book.genre}}</td>
-                            <td>{{book.quantity}}</td>
-                            <td>{{book.sellingPrice}}</td>
-                            <td>{{book.rentingPrice}}</td>
-                            <td><button class="btn btn-primary" ng-click="rentBook(book.id)">Rent</button></td>
-                            <td><button class="btn btn-danger" ng-click="delete(book.id)">Remove</button></td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div class="row">
+                    <div ng-repeat="book in books | filter: query">
+                        <div class="col-md-4">
+                        <div class="box" style="text-align:center;">
+                            <img class="cover-photo" src="{{book.photoUrl}}" />
+                            <div>Title: {{book.title}}</div>
+                            <div>Isbn: {{book.isbn}}</div>
+                            <!--<div>Genre: {{book.genre}}</div> -->
+                            <div>Quantity: {{book.quantity}}</div>
+                            <div>Sell Price: {{book.sellingPrice}}</div>
+                            <div>Rent Price: {{book.rentingPrice}}</div>
+                            <!--<button class="btn btn-primary" ng-click="rentBook(book.id)">Rent</button> -->
+                            <button class="btn btn-primary" ng-click="sendMessage(book.id)">Send Message</button>
+                            <!--<button class="btn btn-danger" ng-click="delete(book.id)">Remove</button> -->
+                        </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             </div>
         </div>

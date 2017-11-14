@@ -41,7 +41,7 @@ namespace ConcordiaBookApp.Controllers
             });
             return Json(jsonBook, JsonRequestBehavior.AllowGet);
         }
-
+        [System.Web.Mvc.Authorize]
         public ActionResult Index()
         {
             return View();
@@ -158,40 +158,41 @@ namespace ConcordiaBookApp.Controllers
             
         }
 
+        // GET: Books/Edit/5
+        [System.Web.Http.HttpPost]
+        [System.Web.Http.Route("Books/SendMessage/{id}")]
+        public string SendMessage(int id, [FromBody]MessageDto messages)
+        {
+            try
+            {
+                var currentUserId = User.Identity.GetUserId();
+                var up = db.UserProfiles.FirstOrDefault(x => x.UserId == currentUserId);
+                var test = db.BooksInStore.FirstOrDefault(y => y.Book.BookId == id);
+                var bookOwner = db.UserProfiles.Find(test.user.UserId);
 
-        //// GET: Books/Edit/5
-        //[System.Web.Http.HttpDelete]
-        //[System.Web.Http.Route("Books/SellBook/{id}")]
-        //public JsonResult SellBook(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return Json("Fail No Id provided");
-        //    }
-        //    Book book = db.Books.Find(id);
-        //    if (book.Quantity > 1)
-        //    {
-        //        book.Quantity -= 1;
-        //    }
-        //    else
-        //    {
-        //        db.Books.Remove(book);
-        //    }
-        //    var currentUserId = User.Identity.GetUserId();
-        //    var up = db.UserProfiles.FirstOrDefault(x => x.UserId == book.BookSellerId);
-        //    if (book == null)
-        //    {
-        //        return Json("Fail no Book");
-        //    }
-        //    else
-        //    {
-        //        book.Quantity = 1;
-        //        up.BooksSold.Add(book);
-        //        db.SaveChanges();
-        //        return Json("success");
-        //    }
+                var messageThreadList = new List<MessageThread>();
+                var messageThread = new MessageThread();
+                messageThread.Title = messages.Title;
+                messageThread.MessageBody = messages.MessageBody;
+                messageThread.SenderId = up.UserId;
+                messageThreadList.Add(messageThread);
 
-        //}
+                var message = new Messages();                
+                message.FromId = up.UserId;
+                message.MessagesInThread = messageThreadList;
+                message.User = bookOwner;
+                bookOwner.Messages.Add(message);
+
+                db.SaveChanges();
+            } 
+            catch(Exception err)
+            {
+                return err.Message;
+            }
+            return "success";
+
+        }
+
 
         // POST: Books/Delete/5
         [System.Web.Http.HttpDelete]
@@ -199,6 +200,8 @@ namespace ConcordiaBookApp.Controllers
         public HttpStatusCode DeleteBook(int id)
         {
             Book book = db.Books.Find(id);
+            BooksInStore books = db.BooksInStore.FirstOrDefault(x => x.Book.BookId == id);
+            db.BooksInStore.Remove(books);
             db.Books.Remove(book);
             db.SaveChanges();
             return HttpStatusCode.OK;

@@ -17,7 +17,7 @@
     <link href="~/Client/css/BookstoreCss.css" rel="stylesheet" />
 </head>
 <body ng-app="bookApp">
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar navbar-inverse navbar-fixed-top" ng-controller="NavController">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -27,13 +27,15 @@
                 </button>
                 @Html.ActionLink("Concordia Book Store", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
+           
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("View Books", "Index", "Books")</li>
-                    <li>@Html.ActionLink("Add Book", "Create", "Books")</li>
-                    <li>@Html.ActionLink("User Profile", "UserProfile", "User")</li>
-                </ul>
+                <div ng-hide="!showNav">
+                    <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("View Books", "Index", "Books")</li>
+                        <li>@Html.ActionLink("Add Book", "Create", "Books")</li>
+                        <li>@Html.ActionLink("User Profile", "UserProfile", "User")</li>
+                    </ul>
+                </div>
                 @Html.Partial("_LoginPartial")
             </div>
         </div>
@@ -53,5 +55,10 @@
     <script src="~/Client/Users/UserService.js"></script>
     <script src="~/Client/Users/CreateNewUserController.js"></script>
     <script src="~/Client/Users/CreateNewUserController.js"></script>
+    <script src="~/Client/Nav/NavController.js"></script>
+    <script src="~/Client/Messaging/MessageService.js"></script>
+    <script src="~/Client/Messaging/MessageController.js"></script>
+    <script src="~/Client/Messaging/MyMessageController.js"></script>
+
 </body>
 </html>
