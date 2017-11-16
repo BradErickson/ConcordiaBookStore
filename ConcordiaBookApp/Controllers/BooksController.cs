@@ -34,6 +34,7 @@ namespace ConcordiaBookApp.Controllers
                 sellingPrice = x.SellingPrice,
                 photoUrl = x.PhotoUrl,
                 quantity = x.Quantity,
+                AvailableTrade = x.AvailableTrade,
                 authors = x.Authors.Select(y => new
                 {
                     name = y.Name
@@ -95,7 +96,7 @@ namespace ConcordiaBookApp.Controllers
                 PhotoUrl = book.PhotoUrl,
                 Authors = authors,
                 };
-         
+
             var currentUserId = User.Identity.GetUserId();
             var up = db.UserProfiles.FirstOrDefault(x => x.UserId == currentUserId);
             var addBookToStore = new BooksInStore
