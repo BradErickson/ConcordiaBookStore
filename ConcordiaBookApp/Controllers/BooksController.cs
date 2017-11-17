@@ -34,6 +34,7 @@ namespace ConcordiaBookApp.Controllers
                 sellingPrice = x.SellingPrice,
                 photoUrl = x.PhotoUrl,
                 quantity = x.Quantity,
+                rating = x.sellerRating,
                 authors = x.Authors.Select(y => new
                 {
                     name = y.Name
@@ -120,6 +121,32 @@ namespace ConcordiaBookApp.Controllers
 
            
         }
+
+        // POST: Books/Create
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [System.Web.Http.HttpPost]
+        [System.Web.Http.Authorize]
+        [System.Web.Http.Route("Books/rateuser")]
+        public JsonResult RateUser([FromBody]PostRating newRating)
+        {
+            var test = db.BooksInStore.FirstOrDefault(y => y.Book.BookId == newRating.BookId);
+            var bookOwner = db.UserProfiles.Find(test.user.UserId);
+            var ratingList = new List<UserRatings>();
+            var rating = new UserRatings();
+            rating.Rating = newRating.Rating;
+            ratingList.Add(rating);
+            bookOwner.MyRating = ratingList;
+            var currentBook = db.Books.FirstOrDefault(x => x.BookId == newRating.BookId);
+            currentBook.sellerRating = newRating.Rating;
+            db.SaveChanges();
+
+            return Json(HttpStatusCode.OK);
+            
+
+
+        }
+
 
         // GET: Books/Edit/5
         [System.Web.Http.HttpDelete]

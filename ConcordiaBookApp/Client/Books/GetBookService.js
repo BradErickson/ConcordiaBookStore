@@ -8,6 +8,7 @@ function BookService ($http) {
             method: 'GET',
             url: '/Books/getBooks'
         }).then(function successCallback(response) {
+            debugger;
             return response.data;
         }, function errorCallback(response) {
             console.log(response);
@@ -19,6 +20,21 @@ function BookService ($http) {
             method: 'POST',
             url: '/Books/postBook',
             data: PostBook,
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).then(function successCallback(response) {
+            console.log("response", response);
+        }, function errorCallback(response) {
+            console.log("response", response);
+        });
+    }
+
+    BookService.postRating = function (PostRating) {
+        return $http({
+            method: 'POST',
+            url: '/Books/rateuser',
+            data: PostRating,
             headers: {
                 "Content-Type": "application/json"
             }

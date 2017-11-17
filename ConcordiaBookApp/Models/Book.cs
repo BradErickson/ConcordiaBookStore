@@ -24,5 +24,6 @@ namespace ConcordiaBookApp.Models
         public virtual ICollection<Author> Authors { get; set; }
         public virtual ICollection<BookRental> Rentals { get; set; }
         public virtual ICollection<BooksInStore> BookStore { get; set; }
+        public int sellerRating { get; set; }
     }
 }

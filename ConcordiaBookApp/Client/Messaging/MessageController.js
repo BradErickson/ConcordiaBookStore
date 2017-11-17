@@ -10,7 +10,6 @@ function CreateMessageController($scope, MessageService) {
         var bookId = getParameterByName("bookId");
         MessageService.postMessage(PostMessage, bookId).then(function (response) {
             $scope.isLoading = false;
-            alert("Success");
             window.location = "/";
         });
     }
@@ -21,7 +20,6 @@ function CreateMessageController($scope, MessageService) {
         var messageId = getParameterByName("messageId");
         MessageService.replyMessage(PostMessage, messageId).then(function (response) {
             $scope.isLoading = false;
-            alert("Success");
             window.location = "/";
         });
     }

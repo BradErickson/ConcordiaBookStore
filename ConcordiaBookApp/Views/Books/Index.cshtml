@@ -33,9 +33,12 @@
                             <div>Quantity: {{book.quantity}}</div>
                             <div>Sell Price: {{book.sellingPrice}}</div>
                             <div>Rent Price: {{book.rentingPrice}}</div>
-                            <!--<button class="btn btn-primary" ng-click="rentBook(book.id)">Rent</button> -->
+                            <div class="row">
+                                <input placeholder="Enter Rating" class="col-xs-12" type="number" min="0" max="5" ng-model="newRating" />
+                                <button class="col-xs-12 btn btn-info" style="margin-bottom:5px;" ng-click="RateUser(book.id, newRating)">Post Rating</button>
+                            </div>
                             <button class="btn btn-primary" ng-click="sendMessage(book.id)">Send Message</button>
-                            <!--<button class="btn btn-danger" ng-click="delete(book.id)">Remove</button> -->
+                            <div>Seller rating: {{book.rating}} stars</div>
                         </div>
                         </div>
                     </div>

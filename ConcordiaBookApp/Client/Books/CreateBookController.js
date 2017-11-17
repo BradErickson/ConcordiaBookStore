@@ -8,7 +8,6 @@ function CreateBookController($scope, BookService) {
         $scope.isLoading = true
         BookService.postBooks(PostBook).then(function (response) {
             $scope.isLoading = false;
-            alert("Success");
             window.location = "/";
         });
     }
