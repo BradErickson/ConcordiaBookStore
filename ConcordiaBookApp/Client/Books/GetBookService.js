@@ -8,7 +8,6 @@ function BookService ($http) {
             method: 'GET',
             url: '/Books/getBooks'
         }).then(function successCallback(response) {
-            debugger;
             return response.data;
         }, function errorCallback(response) {
             console.log(response);

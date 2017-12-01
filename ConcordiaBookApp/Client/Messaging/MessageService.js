@@ -8,7 +8,6 @@ function MessageService($http) {
         window.location = "/messages/GetMyMessages";
     }
     MessageService.replyMessagePage = function (messageId) {
-        debugger;
         window.location = "/messages/create?messageId=" + messageId + "&isReply=true";
     }
 

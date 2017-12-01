@@ -6,14 +6,12 @@ function MyMessageController($scope, MessageService) {
     $scope.myMessages = {};
 
     $scope.reply = function (PostMessage) {
-        debugger;
         MessageService.replyMessagePage(PostMessage);
     }
     getMyMessages();
 
     function getMyMessages() {
         MessageService.getMyMessages().then(function (data) {
-            debugger;
             $scope.myMessages = data;
         })
     }

@@ -15,7 +15,6 @@ function CreateMessageController($scope, MessageService) {
     }
 
     $scope.reply = function (PostMessage) {
-        debugger;
         $scope.isLoading = true
         var messageId = getParameterByName("messageId");
         MessageService.replyMessage(PostMessage, messageId).then(function (response) {

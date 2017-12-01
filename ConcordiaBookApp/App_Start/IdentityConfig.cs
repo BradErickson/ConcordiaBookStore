@@ -22,6 +22,7 @@ namespace ConcordiaBookApp
 
         {
             string envPath = System.Environment.GetEnvironmentVariable("SEND_GRID", EnvironmentVariableTarget.User);
+
             var client = new SendGridClient(envPath); // https://app.sendgrid.com
             var from = new EmailAddress("Ericksob1@csp.edu", "Concordia BookStore");
             var subject = iMessage.Subject;

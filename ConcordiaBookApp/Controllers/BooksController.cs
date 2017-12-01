@@ -64,7 +64,15 @@ namespace ConcordiaBookApp.Controllers
         }
 
         // GET: Books/Create
+        [System.Web.Http.Route("Books/create")]
         public ActionResult Create()
+        {
+            return View();
+        }
+
+        // GET: Books/Create
+        [System.Web.Http.Route("Books/add")]
+        public ActionResult Add()
         {
             return View();
         }

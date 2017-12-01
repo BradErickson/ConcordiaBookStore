@@ -117,7 +117,7 @@ namespace ConcordiaBookApp.Controllers
             public string Title { get; set; }
             public string Description { get; set; }
             public double Version { get; set; }
-            public int ISBN { get; set; }
+            public string ISBN { get; set; }
             public string Genre { get; set; }
             public double SellingPrice { get; set; }
             public double RentingPrice { get; set; }
@@ -129,7 +129,7 @@ namespace ConcordiaBookApp.Controllers
             public string Title { get; set; }
             public string Description { get; set; }
             public double Version { get; set; }
-            public int ISBN { get; set; }
+            public string ISBN { get; set; }
             public string Genre { get; set; }
             public double SellingPrice { get; set; }
             public double RentingPrice { get; set; }

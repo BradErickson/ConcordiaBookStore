@@ -269,7 +269,6 @@
     <Content Include="Client\Books\BookIndexController.js" />
     <Content Include="Client\Books\CreateBookController.js" />
     <Content Include="Client\Books\GetBookService.js" />
-    <Content Include="Client\css\BookstoreCss.css" />
     <Content Include="Client\Messaging\MessageController.js" />
     <Content Include="Client\Messaging\MessageService.js" />
     <Content Include="Client\Messaging\MyMessageController.js" />
@@ -1078,7 +1077,6 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include=".gitignore" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -1117,6 +1115,7 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Account\Info.cshtml" />
     <Content Include="Views\Account\RegisterNewUser.cshtml" />
+    <Content Include="Views\Books\Add.cshtml" />
     <None Include="Views\Books\Create.cshtml" />
     <Content Include="Views\Books\Delete.cshtml" />
     <Content Include="Views\Books\Details.cshtml" />
