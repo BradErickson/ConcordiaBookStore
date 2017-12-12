@@ -25,7 +25,6 @@ function UserService($http) {
         }).then(function successCallback(response) {
             return response.data;
         }, function errorCallback(response) {
-            console.log(response);
         });
     };
 

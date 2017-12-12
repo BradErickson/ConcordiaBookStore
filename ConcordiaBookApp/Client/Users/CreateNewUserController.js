@@ -3,17 +3,17 @@
 
 function CreateNewUserController($scope, UserService) {
     $scope.CreateUserViewModel = {};
-    $scope.error = "";
+    $scope.confirmation = "";
     $scope.isLoading = false;
     $scope.update = function (CreateUserViewModel) {
         $scope.isLoading = true;
         UserService.postUser(CreateUserViewModel).then(function (response) {
             if (response.data.error) {
                 $scope.isLoading = false;
-                $scope.error = response.data.error.message;
+                alert(response.data.error.message);
             } else {
                 $scope.isLoading = false;
-                window.location = "/";
+                $scope.confirmation = "To complete registration, click the confirmation link in your email";
             }
         });
     };

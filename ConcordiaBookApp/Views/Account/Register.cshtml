@@ -3,8 +3,8 @@
     <div ng-controller="CreateNewUserController">
         <div ng-show="isLoading" class="loader">loader...</div>
         <div ng-hide="isLoading">
-            <div ng-show="error">{{error}}</div>
-            <div ng-hide="error">
+            <div ng-show="confirmation">{{confirmation}}</div>
+            <div ng-hide="confirmation">
                 <form name="myForm" novalidate class="simple-form">
                     <fieldset>
                         <label name="fname" for="firstName">First Name: <input type="text" id="firstName" class="twoColumn" ng-model="CreateUserViewModel.FirstName" /></label> &nbsp;&nbsp;&nbsp;&nbsp;
