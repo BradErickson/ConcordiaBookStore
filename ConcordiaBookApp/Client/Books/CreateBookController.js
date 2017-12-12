@@ -1,5 +1,5 @@
 ﻿angular.module('bookApp')
-.controller("CreateBookController", CreateBookController)
+    .controller("CreateBookController", CreateBookController)
 
 function CreateBookController($scope, BookService) {
     $scope.PostBook = {};
@@ -8,7 +8,6 @@ function CreateBookController($scope, BookService) {
         $scope.isLoading = true
         BookService.postBooks(PostBook).then(function (response) {
             $scope.isLoading = false;
-            alert("Success");
             window.location = "/";
         });
     }

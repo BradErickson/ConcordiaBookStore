@@ -23,6 +23,7 @@ namespace ConcordiaBookApp.Models
         public virtual ICollection<BookRental> BookRentals{get; set;}
         public virtual ICollection<BooksSold> BooksSold { get; set; }
         public virtual ICollection<Messages> Messages { get; set; }
+        public virtual ICollection<UserRatings> MyRating { get; set; }
 
     }
 }

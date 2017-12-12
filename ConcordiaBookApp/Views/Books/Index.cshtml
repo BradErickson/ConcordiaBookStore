@@ -1,4 +1,4 @@
-﻿<div class="row">
+<div class="row">
     <div ng-controller="BookIndexController">
         @Html.ActionLink("Create", "Create")
         <div ng-show="isLoading" class="loader">loader...</div>
@@ -36,8 +36,19 @@
                             <div ng-if="book.AvailableTrade == true">Eligible for Trade</div>
                             <div ng-if="book.AvailableTrade != true">Not Eligible for Trade</div>
                             <!--<button class="btn btn-primary" ng-click="rentBook(book.id)">Rent</button> -->
+                            <div class="row" style="margin-top:5px;">
+                                <input placeholder="Enter Rating" class="col-xs-12" type="number" min="0" max="5" ng-model="newRating" />
+                                <button class="col-xs-5 col-sm-offset-3 btn btn-info" style="margin-top:5px;" ng-click="RateUser(book.id, newRating)">Rate Seller</button>
+                            </div>
+                            <p>
+                                Seller Rating:
+                                <span ng-class="{checked: book.rating >= 1}" class="fa fa-star"></span>
+                                <span ng-class="{checked: book.rating >= 2}" class="fa fa-star"></span>
+                                <span ng-class="{checked: book.rating >= 3}" class="fa fa-star"></span>
+                                <span ng-class="{checked: book.rating >= 4}" class="fa fa-star"></span>
+                                <span ng-class="{checked: book.rating >= 5}" class="fa fa-star"></span>
+                            </p>
                             <button class="btn btn-primary" ng-click="sendMessage(book.id)">Send Message</button>
-                            <!--<button class="btn btn-danger" ng-click="delete(book.id)">Remove</button> -->
                         </div>
                         </div>
                     </div>

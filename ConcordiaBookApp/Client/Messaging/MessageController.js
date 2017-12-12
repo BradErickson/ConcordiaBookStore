@@ -10,18 +10,15 @@ function CreateMessageController($scope, MessageService) {
         var bookId = getParameterByName("bookId");
         MessageService.postMessage(PostMessage, bookId).then(function (response) {
             $scope.isLoading = false;
-            alert("Success");
             window.location = "/";
         });
     }
 
     $scope.reply = function (PostMessage) {
-        debugger;
         $scope.isLoading = true
         var messageId = getParameterByName("messageId");
         MessageService.replyMessage(PostMessage, messageId).then(function (response) {
             $scope.isLoading = false;
-            alert("Success");
             window.location = "/";
         });
     }

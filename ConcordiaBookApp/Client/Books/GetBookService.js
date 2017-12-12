@@ -29,6 +29,21 @@ function BookService ($http) {
         });
     }
 
+    BookService.postRating = function (PostRating) {
+        return $http({
+            method: 'POST',
+            url: '/Books/rateuser',
+            data: PostRating,
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).then(function successCallback(response) {
+            console.log("response", response);
+        }, function errorCallback(response) {
+            console.log("response", response);
+        });
+    }
+
     BookService.deleteBooks = function (bookId) {
         return $http({
             method: 'DELETE',

@@ -21,7 +21,7 @@ function BookIndexController($scope, BookService) {
         BookService.deleteBooks(bookId).then(function (data) {
             console.log("Data: ", data);
             getBooks();
-        })
+               })
     }
 
     $scope.rentBook = function (bookId) {
@@ -34,5 +34,17 @@ function BookIndexController($scope, BookService) {
     $scope.sendMessage = function (bookId) {
         BookService.getMessagePage(bookId).then(function () {
         })
+    }
+
+    $scope.RateUser = function (bookId, newRating) {
+        $scope.isLoading = true;
+        var PostRating = {
+            BookId: bookId,
+            Rating: newRating
+        }
+        BookService.postRating(PostRating).then(function (response) {
+            $scope.isLoading = false;
+            window.location.reload;
+        });
     }
 }

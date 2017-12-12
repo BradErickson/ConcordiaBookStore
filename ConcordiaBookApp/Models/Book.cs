@@ -14,7 +14,7 @@ namespace ConcordiaBookApp.Models
         public string Title { get; set; }
         public string Description { get; set; }
         public double Version { get; set; }
-        public int ISBN { get; set; }
+        public string ISBN { get; set; }
         public int Quantity { get; set; }
         public string Genre { get; set; }
         public double SellingPrice { get; set; }
@@ -24,5 +24,6 @@ namespace ConcordiaBookApp.Models
         public virtual ICollection<Author> Authors { get; set; }
         public virtual ICollection<BookRental> Rentals { get; set; }
         public virtual ICollection<BooksInStore> BookStore { get; set; }
+        public int sellerRating { get; set; }
     }
 }
