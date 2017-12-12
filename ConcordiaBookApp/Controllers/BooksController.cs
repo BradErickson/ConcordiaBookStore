@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -34,6 +34,7 @@ namespace ConcordiaBookApp.Controllers
                 sellingPrice = x.SellingPrice,
                 photoUrl = x.PhotoUrl,
                 quantity = x.Quantity,
+                AvailableTrade = x.AvailableTrade,
                 rating = x.sellerRating,
                 authors = x.Authors.Select(y => new
                 {
@@ -104,7 +105,7 @@ namespace ConcordiaBookApp.Controllers
                 PhotoUrl = book.PhotoUrl,
                 Authors = authors,
                 };
-         
+
             var currentUserId = User.Identity.GetUserId();
             var up = db.UserProfiles.FirstOrDefault(x => x.UserId == currentUserId);
             var addBookToStore = new BooksInStore
