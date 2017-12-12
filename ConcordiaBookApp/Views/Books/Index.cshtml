@@ -33,8 +33,8 @@
                             <div>Quantity: {{book.quantity}}</div>
                             <div>Sell Price: {{book.sellingPrice}}</div>
                             <div>Rent Price: {{book.rentingPrice}}</div>
-                            <div ng-if="book.AvailableTrade == true">ELIGIBLE FOR TRADE</div>
-                            <div ng-if="book.AvailableTrade != true" style="color:red;">NOT ELIGIBLE FOR TRADE </div>
+                            <div ng-if="book.AvailableTrade == true">Eligible for Trade</div>
+                            <div ng-if="book.AvailableTrade != true">Not Eligible for Trade</div>
                             <!--<button class="btn btn-primary" ng-click="rentBook(book.id)">Rent</button> -->
                             <button class="btn btn-primary" ng-click="sendMessage(book.id)">Send Message</button>
                             <!--<button class="btn btn-danger" ng-click="delete(book.id)">Remove</button> -->
